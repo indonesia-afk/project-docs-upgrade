@@ -88,7 +88,7 @@
 
       <footer class="site-footer" id="siteFooter">
         <div class="footer-row">
-          📌 Terakhir sinkron: 29 Sep 2025 23:59
+          📌 Terakhir sinkron: 30 Sep 2025 00:01
         </div>
         <div class="footer-row">
           📂 Jumlah file: 30 • Dokumen: 21 • PDF: 9 • Spreadsheet: 0 • Slide: 0 • Gambar: 0 • Lainnya: 0
@@ -153,17 +153,18 @@
         renderNextBatch();
       }
 
-      function createCardElement(d) {
+function createCardElement(d) {
         const card = document.createElement('div');
         card.className = 'doc-card';
-        const newBadge = d.isNew ? '<span class="badge-new">NEW</span>' : '';
         const safeTitle = escapeHtml(d.title);
+        
+        // 1. Buat kerangka HTML dasar terlebih dahulu
         card.innerHTML = `
           <div style="display:flex; gap:10px; align-items:center;">
             <div class="icon-circle">${d.icon}</div>
             <div style="flex:1; min-width:0;">
               <a class="doc-title" href="javascript:void(0)" onclick="openViewer('${d.preview}', '${safeTitle}')">${safeTitle}</a>
-              <div class="doc-meta"><div class="meta-left">updated: ${d.updated} ${d.isNew ? '${newBadge}' : ''}</div></div>
+              <div class="doc-meta"><div class="meta-left"></div></div>
             </div>
           </div>
           <div class="card-actions">
@@ -173,6 +174,23 @@
             <div style="font-size:0.9rem; color:var(--muted)">${d.typeLabel}</div>
           </div>
         `;
+
+        // 2. Cari elemen .meta-left di dalam kartu yang baru dibuat
+        const metaLeft = card.querySelector('.meta-left');
+        
+        // 3. Buat dan tambahkan elemen untuk tanggal
+        const dateSpan = document.createElement('span');
+        dateSpan.textContent = 'updated: ' + d.updated;
+        metaLeft.appendChild(dateSpan);
+        
+        // 4. Jika file baru, buat dan tambahkan elemen badge
+        if (d.isNew) {
+          const badge = document.createElement('span');
+          badge.className = 'badge-new';
+          badge.textContent = 'NEW';
+          metaLeft.appendChild(badge);
+        }
+
         return card;
       }
 
