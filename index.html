@@ -7,157 +7,37 @@
     <title>TAMAN BACAAN by @TOMMY</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <style>
-      :root{ --accent:#1a73e8; --bg:#f0f2f5; --card:#fff; --text:#111; --muted:#555; }
-      body { font-family: Arial, sans-serif; margin:0; padding:0; background:var(--bg); color:var(--text); transition: background .25s, color .25s; }
-      .container { max-width:1000px; margin:20px auto; padding:20px; }
-      h1 { text-align:center; color:var(--accent); margin-bottom:16px; font-family:'Orbitron',sans-serif; text-transform:uppercase; letter-spacing:2px; }
-      #searchInput { width:100%; padding:10px; margin-bottom:18px; font-size:1em; border-radius:6px; border:1px solid #ccc; box-sizing:border-box; }
-      .doc-list { display:flex; flex-wrap:wrap; gap:18px; justify-content:center; }
-      .doc-card { background:var(--card); padding:18px; box-shadow:0 6px 16px rgba(0,0,0,0.08); border-radius:10px; width:260px; word-break:break-word; transition: transform .16s; display:flex; flex-direction:column; gap:8px; }
-      .doc-card:hover { transform: translateY(-6px); }
-      .doc-title { font-weight:700; color:var(--accent); text-decoration:none; font-size:1.02em; }
-      .doc-meta { font-size:0.9em; color:var(--muted); }
-      .btn { display:inline-block; padding:8px 12px; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; font-size:0.95em; cursor:pointer; border:none; }
-      .btn.secondary { background:#e0e0e0; color:#111; }
-
-      .badge-new { background:#ff1744; color:#fff; font-size:0.75em; padding:2px 6px; border-radius:6px; margin-left:6px; }
-
-      footer.site-footer { margin-top:28px; font-size:0.92em; color:var(--muted); text-align:center; padding-top:16px; border-top:1px solid #e6e6e6; }
-
-      .theme-toggle { position: fixed; top: 14px; right:14px; width:36px; height:36px; border-radius:50%; background:#fff; box-shadow:0 6px 14px rgba(0,0,0,0.12); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1100; }
-      .theme-toggle svg { width:20px; height:20px; }
-
-      .viewer-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center; z-index:1200; padding:20px; }
-      .viewer-content { width:100%; max-width:1100px; height:80vh; background:#fff; border-radius:10px; overflow:hidden; position:relative; display:flex; flex-direction:column; }
-      .viewer-header { display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#fafafa; border-bottom:1px solid #eee; }
-      .viewer-iframe { flex:1; border:0; width:100%; height:100%; }
-      .viewer-close { background:transparent; border:0; font-size:1.1em; cursor:pointer; }
-
-      body.dark { background:#111; color:#eee; }
-      body.dark .doc-card { background:#1a1a1a; box-shadow:0 4px 10px rgba(0,0,0,0.6); }
-      body.dark .theme-toggle { background:#222; }
-      body.dark .viewer-content { background:#111; color:#eee; }
-      body.dark .viewer-header { background:#0f0f0f; border-bottom-color:#222; }
-      @media (max-width:640px){
-        .doc-card { width:100%; }
-        .viewer-content { height:86vh; max-width:100%; border-radius:8px; }
-      }
+      body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f0f2f5; color:#111; }
+      h1 { text-align:center; color:#1a73e8; margin-bottom:12px; font-size:1.6rem;
+           font-family:'Orbitron', sans-serif; text-transform:uppercase; }
+      .badge-new { background:#ff5252; color:#fff; padding:3px 8px; border-radius:999px;
+                   font-size:0.75rem; font-weight:700; margin-left:6px; }
     </style>
   </head>
   <body>
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle tema">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a9.93 9.93 0 0 0-7.07 2.93A10 10 0 1 0 12 2z"/></svg>
-    </div>
-
     <div class="container">
       <h1>TAMAN BACAAN by @TOMMY</h1>
-      <input id="searchInput" placeholder="Cari judul atau isi dokumen..." />
-      <div class="doc-list" id="docList"></div>
-
-      <footer class="site-footer" id="siteFooter">
-        📌 Terakhir sinkron: 29 Sep 2025 19:33<br>
-        📂 Jumlah file dalam folder: 30<br>
-      </footer>
+      <div id="docList"></div>
     </div>
-
-    <div id="viewerOverlay" class="viewer-overlay" onclick="overlayClick(event)">
-      <div class="viewer-content" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
-        <div class="viewer-header">
-          <div id="viewerTitle">Preview</div>
-          <div>
-            <button class="btn secondary" id="openNewTab">Buka di Tab Baru</button>
-            <button class="viewer-close" onclick="closeViewer()">✕</button>
-          </div>
-        </div>
-        <iframe id="viewerIframe" class="viewer-iframe" src=""></iframe>
-      </div>
-    </div>
-
     <script>
-      const docs = [{"id":"1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY","title":"Bispro Bantuan Iuran JKP Pemerintah.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY/preview","updated":"29 Sep 2025 18:43","contentText":"","isNew":true},{"id":"10TEINonN4qE51bcgu00gvJ9sRFGxbK-7","title":"Laporan Komprehensif Hasil ILC ke-113: Analisis St....pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/10TEINonN4qE51bcgu00gvJ9sRFGxbK-7/preview","updated":"29 Sep 2025 18:43","contentText":"","isNew":true},{"id":"1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7","title":"Laporan Lengkap Hasil Pertemuan ILC Sesi ke-113.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7/preview","updated":"29 Sep 2025 18:43","contentText":"","isNew":true},{"id":"1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH","title":"Panduan Lengkap Jaminan Sosial Ketenagakerjaan (Edisi Revisi) #1.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH/preview","updated":"29 Sep 2025 18:43","contentText":"","isNew":true},{"id":"1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8","title":"Pembaruan Laporan BPJS Ketenagakerjaan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8/preview","updated":"29 Sep 2025 18:43","contentText":"","isNew":true},{"id":"13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj","title":"Analisis Jaminan Sosial Ketenagakerjaan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj/preview","updated":"29 Sep 2025 18:42","contentText":"","isNew":true},{"id":"1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ","title":"Peraturan Pengupahan dan Hubungan Kerja\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ/preview","updated":"29 Sep 2025 18:42","contentText":"","isNew":true},{"id":"1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF/preview","updated":"29 Sep 2025 18:42","contentText":"","isNew":true},{"id":"1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58","title":"Solusi Klaim JKP Dery Setiawan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58/preview","updated":"29 Sep 2025 18:42","contentText":"","isNew":true},{"id":"1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU","title":"PHK, Pesangon, dan Peraturan Hukum","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU/preview","updated":"29 Sep 2025 17:54","contentText":"","isNew":true},{"id":"1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ","title":"Telaahan Jamsos Ojol Kurol","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ/preview","updated":"29 Sep 2025 17:54","contentText":"","isNew":true},{"id":"15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk","title":"Risalah Komprehensif Sistem Jaminan Sosial Ketenagakerjaan di Indonesia ","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk/preview","updated":"29 Sep 2025 17:50","contentText":"","isNew":true},{"id":"1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0","title":"Laporan Komprehensif Hasil ILC ke-113","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0/preview","updated":"29 Sep 2025 17:49","contentText":"","isNew":true},{"id":"1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes","title":"Panduan Mediasi","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes/preview","updated":"29 Sep 2025 17:46","contentText":"","isNew":true},{"id":"14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI","title":"Hukum Perusahaan ","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI/preview","updated":"29 Sep 2025 17:46","contentText":"","isNew":true},{"id":"1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E","title":"Panduan Beracara di Pengadilan HI","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E/preview","updated":"29 Sep 2025 17:46","contentText":"","isNew":true},{"id":"1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg","title":"Solusi Klaim JKP Dery Setiawan (ver 2)","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg/preview","updated":"29 Sep 2025 17:42","contentText":"","isNew":true},{"id":"107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM","title":"Panduan Komprehensif Hukum Ketenagakerjaan dan HI","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM/preview","updated":"29 Sep 2025 14:34","contentText":"","isNew":true},{"id":"1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4","title":"Ketenagakerjaan Tangguh Iklim","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4/preview","updated":"29 Sep 2025 13:58","contentText":"","isNew":true},{"id":"1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA","title":"JHT dan JP Analisis Mendalam","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA/preview","updated":"29 Sep 2025 13:50","contentText":"","isNew":true},{"id":"1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU","title":"Analisis Komprehensif Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU/preview","updated":"29 Sep 2025 13:13","contentText":"","isNew":true},{"id":"19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0","title":"Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0/preview","updated":"29 Sep 2025 11:43","contentText":"","isNew":true},{"id":"1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo","title":"Kendala Prosedural Klaim Manfaat JKP Pasca Sengketa Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo/preview","updated":"29 Sep 2025 10:37","contentText":"","isNew":true},{"id":"1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI/preview","updated":"29 Sep 2025 09:56","contentText":"","isNew":true},{"id":"104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU","title":"Peraturan Pengupahan dan Hubungan Kerja","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU/preview","updated":"29 Sep 2025 09:56","contentText":"","isNew":true},{"id":"1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38","title":"Analisis Jaminan Sosial Ketenagakerjaan","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38/preview","updated":"29 Sep 2025 09:56","contentText":"","isNew":true},{"id":"1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI","title":"Laporan Acara Bappenas 25082025","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI/preview","updated":"26 Aug 2025 01:04","contentText":"","isNew":false},{"id":"16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50","title":"Pendalaman Informasi Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50/preview","updated":"03 Aug 2025 08:04","contentText":"","isNew":false},{"id":"1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0","title":"Panduan Lengkap Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0/preview","updated":"03 Aug 2025 08:02","contentText":"","isNew":false},{"id":"1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4","title":"Panduan Lengkap Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://drive.google.com/file/d/1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4/preview","updated":"27 Jul 2025 00:42","contentText":"","isNew":false}];
+      const allDocs = [{"id":"1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY","title":"Bispro Bantuan Iuran JKP Pemerintah.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"10TEINonN4qE51bcgu00gvJ9sRFGxbK-7","title":"Laporan Komprehensif Hasil ILC ke-113: Analisis St....pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/10TEINonN4qE51bcgu00gvJ9sRFGxbK-7/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7","title":"Laporan Lengkap Hasil Pertemuan ILC Sesi ke-113.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH","title":"Panduan Lengkap Jaminan Sosial Ketenagakerjaan (Edisi Revisi) #1.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8","title":"Pembaruan Laporan BPJS Ketenagakerjaan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj","title":"Analisis Jaminan Sosial Ketenagakerjaan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj/preview","updated":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ","title":"Peraturan Pengupahan dan Hubungan Kerja\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ/preview","updated":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF/preview","updated":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58","title":"Solusi Klaim JKP Dery Setiawan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58/preview","updated":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU","title":"PHK, Pesangon, dan Peraturan Hukum","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU/preview","updated":"29 Sep 2025 17:54","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ","title":"Telaahan Jamsos Ojol Kurol","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ/preview","updated":"29 Sep 2025 17:54","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk","title":"Risalah Komprehensif Sistem Jaminan Sosial Ketenagakerjaan di Indonesia ","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk/preview","updated":"29 Sep 2025 17:50","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0","title":"Laporan Komprehensif Hasil ILC ke-113","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0/preview","updated":"29 Sep 2025 17:49","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes","title":"Panduan Mediasi","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes/preview","updated":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI","title":"Hukum Perusahaan ","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI/preview","updated":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E","title":"Panduan Beracara di Pengadilan HI","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E/preview","updated":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg","title":"Solusi Klaim JKP Dery Setiawan (ver 2)","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg/preview","updated":"29 Sep 2025 17:42","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM","title":"Panduan Komprehensif Hukum Ketenagakerjaan dan HI","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM/preview","updated":"29 Sep 2025 14:34","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4","title":"Ketenagakerjaan Tangguh Iklim","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4/preview","updated":"29 Sep 2025 13:58","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA","title":"JHT dan JP Analisis Mendalam","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA/preview","updated":"29 Sep 2025 13:50","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU","title":"Analisis Komprehensif Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU/preview","updated":"29 Sep 2025 13:13","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0","title":"Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0/preview","updated":"29 Sep 2025 11:43","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo","title":"Kendala Prosedural Klaim Manfaat JKP Pasca Sengketa Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo/preview","updated":"29 Sep 2025 10:37","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI/preview","updated":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU","title":"Peraturan Pengupahan dan Hubungan Kerja","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU/preview","updated":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38","title":"Analisis Jaminan Sosial Ketenagakerjaan","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38/preview","updated":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI","title":"Laporan Acara Bappenas 25082025","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI/preview","updated":"26 Aug 2025 01:04","typeLabel":"Dokumen","icon":"📄","isNew":false},{"id":"16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50","title":"Pendalaman Informasi Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50/preview","updated":"03 Aug 2025 08:04","typeLabel":"Dokumen","icon":"📄","isNew":false},{"id":"1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0","title":"Panduan Lengkap Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0/preview","updated":"03 Aug 2025 08:02","typeLabel":"Dokumen","icon":"📄","isNew":false},{"id":"1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4","title":"Panduan Lengkap Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4/preview","updated":"27 Jul 2025 00:42","typeLabel":"Dokumen","icon":"📄","isNew":false}];
       const docListEl = document.getElementById('docList');
-      const searchInput = document.getElementById('searchInput');
-      const viewerOverlay = document.getElementById('viewerOverlay');
-      const viewerIframe = document.getElementById('viewerIframe');
-      const viewerTitle = document.getElementById('viewerTitle');
-      const openNewTabBtn = document.getElementById('openNewTab');
 
-      function createCardElement(d) {
-        const card = document.createElement('div');
-        card.className = 'doc-card';
-
-        const safeTitle = escapeHtml(d.title);
-
-        card.innerHTML = `
-          <div style="flex:1">
-            <a class="doc-title" href="javascript:void(0)" onclick="openViewer('${d.preview}', '${safeTitle}')">${safeTitle}</a>
-            <div class="doc-meta"><div class="meta-left"></div></div>
-          </div>
-          <div style="margin-top:8px">
-            <button class="btn" onclick="openViewer('${d.preview}', '${safeTitle}')">Lihat</button>
-            <a class="btn secondary" href="${d.preview}" target="_blank" rel="noopener">Buka di Tab Baru</a>
-          </div>
-        `;
-
-        // tambahkan tanggal + badge "NEW"
-        const metaLeft = card.querySelector('.meta-left');
-        const dateSpan = document.createElement('span');
-        dateSpan.textContent = 'updated: ' + d.updated;
-        metaLeft.appendChild(dateSpan);
-
-        if (d.isNew) {
-          const badge = document.createElement('span');
-          badge.className = 'badge-new';
-          badge.textContent = 'NEW';
-          metaLeft.appendChild(badge);
-        }
-
-        return card;
-      }
-
-      function renderDocs(filter='') {
+      function renderDocs() {
         docListEl.innerHTML = '';
-        const q = (filter || '').toLowerCase();
-        docs.forEach(d => {
-          const matchesQuery = !q || 
-            (d.title && d.title.toLowerCase().includes(q)) ||
-            (d.contentText && d.contentText.toLowerCase().includes(q));
-          if (matchesQuery) {
-            docListEl.appendChild(createCardElement(d));
-          }
+        allDocs.forEach(d => {
+          const badge = d.isNew ? '<span class="badge-new">NEW</span>' : '';
+          const el = document.createElement('div');
+          el.innerHTML = `
+            <div>
+              <span style="font-size:20px;">${d.icon}</span>
+              <strong>${d.title}</strong> — updated: ${d.updated} ${badge}
+            </div>
+          `;
+          docListEl.appendChild(el);
         });
       }
-
-      function escapeHtml(s){
-        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-      }
-
-      searchInput.addEventListener('input', e => renderDocs(e.target.value));
       renderDocs();
-
-      function openViewer(url, title) {
-        viewerTitle.innerText = title || 'Preview';
-        viewerIframe.src = url;
-        openNewTabBtn.onclick = function(){ window.open(url, '_blank'); };
-        viewerOverlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-      function closeViewer() {
-        viewerOverlay.style.display = 'none';
-        viewerIframe.src = '';
-        document.body.style.overflow = '';
-      }
-      function overlayClick(e){
-        if(e.target === viewerOverlay) closeViewer();
-      }
-      function toggleTheme(){
-        document.body.classList.toggle('dark');
-      }
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape') {
-          if(viewerOverlay.style.display === 'flex') closeViewer();
-        }
-      });
     </script>
   </body>
   </html>
