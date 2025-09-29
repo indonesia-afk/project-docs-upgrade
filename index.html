@@ -40,11 +40,11 @@
         flex: 1; transition: background .2s, color .2s;
       }
       .btn.secondary {
-        background: transparent;
-        border: 1px solid var(--accent);
-        color: var(--accent);
+        background: #28a745; /* Warna hijau */
+        color: #fff;
+        border-color: #28a745;
       }
-      .btn.secondary:hover { background: rgba(26, 115, 232, 0.1); }
+      .btn.secondary:hover { background: #218838; }
       .btn.icon { flex: 0 0 auto; width: 40px; }
       .btn.small { padding:6px 8px; font-size:0.85rem; }
 
@@ -70,8 +70,6 @@
       body.dark .theme-toggle { background:#222; }
       body.dark .viewer-content { background:#111; color:#eee; }
       body.dark .viewer-header { background:#0f0f0f; border-bottom-color:#222; }
-      body.dark .btn.secondary { color: #5a99ee; border-color: #5a99ee; }
-      body.dark .btn.secondary:hover { background: rgba(90, 153, 238, 0.15); }
 
     </style>
   </head>
@@ -94,7 +92,7 @@
       </div>
       <div class="doc-list" id="docList"></div>
       <footer class="site-footer" id="siteFooter">
-        <div class="footer-row">📌 Terakhir sinkron: 30 Sep 2025 00:29</div>
+        <div class="footer-row">📌 Terakhir sinkron: 30 Sep 2025 00:33</div>
         <div class="footer-row">📂 Jumlah file: 30 • Dokumen: 21 • PDF: 9 • Spreadsheet: 0 • Slide: 0 • Gambar: 0 • Lainnya: 0</div>
       </footer>
     </div>
@@ -105,7 +103,7 @@
           <div id="viewerTitle" style="font-weight:700">Preview</div>
           <div style="display:flex; gap:8px; align-items:center;">
             <button class="btn icon" id="btnFullscreen" title="Fullscreen"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
-            <button class="btn secondary" id="openNewTab">Buka di Tab Baru</button>
+            <button class="btn icon" id="openNewTab" title="Buka di Tab Baru"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></button>
             <button class="viewer-close" onclick="closeViewer()" title="Tutup">✕</button>
           </div>
         </div>
