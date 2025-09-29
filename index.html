@@ -1,246 +1,246 @@
 
-  <!DOCTYPE html>
-  <html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Taman Bacaan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-      :root{ --accent:#1a73e8; --bg:#f0f2f5; --card:#fff; --text:#111; --muted:#555; --badge:#ff5252; }
-      body { font-family: Arial, sans-serif; margin:0; padding:0; background:var(--bg); color:var(--text); transition: background .25s, color .25s; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
-      .container { max-width:1000px; margin:20px auto; padding:18px; }
-      h1 { text-align:center; color:var(--accent); margin-bottom:16px; font-family:'Orbitron',sans-serif; text-transform:uppercase; letter-spacing:2px; }
-      .controls { display:flex; gap:12px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
-      
-      .search-wrapper { position: relative; flex:1; min-width:180px; }
-      #searchInput { width: 100%; padding:10px; padding-right: 30px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box; font-size:0.95rem; }
-      #clearSearchBtn { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.2rem; color: #888; cursor: pointer; display: none; padding: 0; line-height: 1; }
+  <!DOCTYPE html>
+  <html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Taman Bacaan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+      :root{ --accent:#1a73e8; --bg:#f0f2f5; --card:#fff; --text:#111; --muted:#555; --badge:#ff5252; }
+      body { font-family: Arial, sans-serif; margin:0; padding:0; background:var(--bg); color:var(--text); transition: background .25s, color .25s; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+      .container { max-width:1000px; margin:20px auto; padding:18px; }
+      h1 { text-align:center; color:var(--accent); margin-bottom:16px; font-family:'Orbitron',sans-serif; text-transform:uppercase; letter-spacing:2px; font-size: 1.5rem; /* UKURAN FONT DIUBAH DI SINI */ }
+      .controls { display:flex; gap:12px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+      
+      .search-wrapper { position: relative; flex:1; min-width:180px; }
+      #searchInput { width: 100%; padding:10px; padding-right: 30px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box; font-size:0.95rem; }
+      #clearSearchBtn { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.2rem; color: #888; cursor: pointer; display: none; padding: 0; line-height: 1; }
 
-      #filterSelect, #sortSelect { padding:10px; border-radius:8px; border:1px solid #ccc; background:#fff; font-size:0.95rem; }
-      .stats { font-size:0.9rem; color:var(--muted); margin-left: auto; }
+      #filterSelect, #sortSelect { padding:10px; border-radius:8px; border:1px solid #ccc; background:#fff; font-size:0.95rem; }
+      .stats { font-size:0.9rem; color:var(--muted); margin-left: auto; }
 
-      .doc-list { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; }
-      .doc-card { background:var(--card); padding:14px; box-shadow:0 6px 16px rgba(0,0,0,0.06); border-radius:10px; width:260px; word-break:break-word; transition: transform .12s; display:flex; flex-direction:column; gap:8px; }
-      .doc-card:hover { transform: translateY(-6px); }
-      .doc-title { 
-        font-weight:700; color:var(--accent); text-decoration:none; font-size:1.02em; 
-        white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-        overflow: hidden; text-overflow: ellipsis; min-height: 2.4em;
-      }
-      .doc-meta { font-size:0.85em; color:var(--muted); display:flex; gap:8px; align-items:center; }
-      .meta-left { display:flex; gap:8px; align-items:center; min-height:1.2rem; }
-      .icon-circle { width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; background:#f6f7fb; font-size:18px; }
-      .badge-new { background:#ff1744; color:#fff; font-size:0.75em; padding:2px 6px; border-radius:6px; margin-left:6px; white-space: nowrap; }
+      .doc-list { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; }
+      .doc-card { background:var(--card); padding:14px; box-shadow:0 6px 16px rgba(0,0,0,0.06); border-radius:10px; width:260px; word-break:break-word; transition: transform .12s; display:flex; flex-direction:column; gap:8px; }
+      .doc-card:hover { transform: translateY(-6px); }
+      .doc-title { 
+        font-weight:700; color:var(--accent); text-decoration:none; font-size:1.02em; 
+        white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+        overflow: hidden; text-overflow: ellipsis; min-height: 2.4em;
+      }
+      .doc-meta { font-size:0.85em; color:var(--muted); display:flex; gap:8px; align-items:center; }
+      .meta-left { display:flex; gap:8px; align-items:center; min-height:1.2rem; }
+      .icon-circle { width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; background:#f6f7fb; font-size:18px; }
+      .badge-new { background:#ff1744; color:#fff; font-size:0.75em; padding:2px 6px; border-radius:6px; margin-left:6px; white-space: nowrap; }
 
-      .card-actions { display:flex; gap:8px; align-items:center; margin-top:auto; padding-top: 6px; }
-      .btn { 
-        display:inline-flex; align-items:center; justify-content: center; gap:8px; padding:8px 10px; border-radius:8px; 
-        background:var(--accent); color:#fff; text-decoration:none; font-size:0.92rem; cursor:pointer; border:1px solid transparent;
-        flex: 1; transition: background .2s, color .2s;
-      }
-      .btn.secondary {
-        background: #28a745; color: #fff; border-color: #28a745;
-      }
-      .btn.secondary:hover { background: #218838; }
-      .btn.icon { flex: 0 0 auto; width: 40px; }
-      .btn.small { padding:6px 8px; font-size:0.85rem; }
+      .card-actions { display:flex; gap:8px; align-items:center; margin-top:auto; padding-top: 6px; }
+      .btn { 
+        display:inline-flex; align-items:center; justify-content: center; gap:8px; padding:8px 10px; border-radius:8px; 
+        background:var(--accent); color:#fff; text-decoration:none; font-size:0.92rem; cursor:pointer; border:1px solid transparent;
+        flex: 1; transition: background .2s, color .2s;
+      }
+      .btn.secondary {
+        background: #28a745; color: #fff; border-color: #28a745;
+      }
+      .btn.secondary:hover { background: #218838; }
+      .btn.icon { flex: 0 0 auto; width: 40px; }
+      .btn.small { padding:6px 8px; font-size:0.85rem; }
 
-      footer.site-footer { margin-top:20px; font-size:0.92rem; color:var(--muted); text-align:center; padding-top:12px; border-top:1px solid #e6e6e6; display:flex; flex-direction:column; gap:6px; align-items:center; }
-      .footer-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:center; }
-      .theme-toggle { position: fixed; top: 14px; right:14px; width:36px; height:36px; border-radius:50%; background:#fff; box-shadow:0 6px 14px rgba(0,0,0,0.12); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1100; }
-      .viewer-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center; z-index:1200; padding:12px; }
-      .viewer-content { width:100%; max-width:1100px; height:85vh; background:#fff; border-radius:10px; overflow:hidden; position:relative; display:flex; flex-direction:column; }
-      .viewer-header { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#fafafa; border-bottom:1px solid #eee; gap:8px; }
-      .viewer-iframe { flex:1; border:0; width:100%; height:100%; background:#fff; }
-      
-      @media (max-width:640px){
-        .doc-card { width:100%; }
-        .viewer-content { height:92vh; max-width:100%; border-radius:8px; }
-        .doc-title { -webkit-line-clamp: 2; }
-        .controls { gap:8px; }
-      }
+      footer.site-footer { margin-top:20px; font-size:0.92rem; color:var(--muted); text-align:center; padding-top:12px; border-top:1px solid #e6e6e6; display:flex; flex-direction:column; gap:6px; align-items:center; }
+      .footer-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:center; }
+      .theme-toggle { position: fixed; top: 14px; right:14px; width:36px; height:36px; border-radius:50%; background:#fff; box-shadow:0 6px 14px rgba(0,0,0,0.12); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1100; }
+      .viewer-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center; z-index:1200; padding:12px; }
+      .viewer-content { width:100%; max-width:1100px; height:85vh; background:#fff; border-radius:10px; overflow:hidden; position:relative; display:flex; flex-direction:column; }
+      .viewer-header { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#fafafa; border-bottom:1px solid #eee; gap:8px; }
+      .viewer-iframe { flex:1; border:0; width:100%; height:100%; background:#fff; }
+      
+      @media (max-width:640px){
+        .doc-card { width:100%; }
+        .viewer-content { height:92vh; max-width:100%; border-radius:8px; }
+        .doc-title { -webkit-line-clamp: 2; }
+        .controls { gap:8px; }
+      }
 
-      body.dark { background:#111; color:#eee; }
-      body.dark .doc-card { background:#151515; box-shadow:0 6px 20px rgba(0,0,0,0.6); }
-      body.dark .theme-toggle { background:#222; }
-      body.dark .viewer-content { background:#111; color:#eee; }
-      body.dark .viewer-header { background:#0f0f0f; border-bottom-color:#222; }
+      body.dark { background:#111; color:#eee; }
+      body.dark .doc-card { background:#151515; box-shadow:0 6px 20px rgba(0,0,0,0.6); }
+      body.dark .theme-toggle { background:#222; }
+      body.dark .viewer-content { background:#111; color:#eee; }
+      body.dark .viewer-header { background:#0f0f0f; border-bottom-color:#222; }
 
-    </style>
-  </head>
-  <body>
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle tema"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a9.93 9.93 0 0 0-7.07 2.93A10 10 0 1 0 12 2z"/></svg></div>
-    <div class="container">
-      <h1>Taman Bacaan by @TOMMY</h1>
-      <div class="controls">
-        <div class="search-wrapper">
-          <input id="searchInput" placeholder="Cari (Doc Only)" />
-          <button id="clearSearchBtn" title="Hapus pencarian">&times;</button>
-        </div>
-        <select id="filterSelect">
-          <option value="all">Filter: Semua</option><option value="Dokumen">Dokumen</option><option value="PDF">PDF</option><option value="Spreadsheet">Spreadsheet</option><option value="Slide">Slide</option><option value="Gambar">Gambar</option><option value="Lainnya">Lainnya</option>
-        </select>
-        <select id="sortSelect">
-          <option value="updated_desc">Urutkan: Terbaru</option>
-          <option value="updated_asc">Urutkan: Terlama</option>
-          <option value="name_asc">Urutkan: Nama (A-Z)</option>
-          <option value="name_desc">Urutkan: Nama (Z-A)</option>
-        </select>
-        <div class="stats" id="statsSummary">—</div>
-      </div>
-      <div class="doc-list" id="docList"></div>
-      <footer class="site-footer" id="siteFooter">
-        <div class="footer-row">📌 Terakhir sinkron: 30 Sep 2025 00:59</div>
-        <div class="footer-row">📂 Jumlah file: 30 • Dokumen: 21 • PDF: 9 • Spreadsheet: 0 • Slide: 0 • Gambar: 0 • Lainnya: 0</div>
-      </footer>
-    </div>
+    </style>
+  </head>
+  <body>
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle tema"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a9.93 9.93 0 0 0-7.07 2.93A10 10 0 1 0 12 2z"/></svg></div>
+    <div class="container">
+      <h1>Taman Bacaan by @TOMMY</h1>
+      <div class="controls">
+        <div class="search-wrapper">
+          <input id="searchInput" placeholder="Cari (Doc Only)" />
+          <button id="clearSearchBtn" title="Hapus pencarian">&times;</button>
+        </div>
+        <select id="filterSelect">
+          <option value="all">Filter: Semua</option><option value="Dokumen">Dokumen</option><option value="PDF">PDF</option><option value="Spreadsheet">Spreadsheet</option><option value="Slide">Slide</option><option value="Gambar">Gambar</option><option value="Lainnya">Lainnya</option>
+        </select>
+        <select id="sortSelect">
+          <option value="updated_desc">Urutkan: Terbaru</option>
+          <option value="updated_asc">Urutkan: Terlama</option>
+          <option value="name_asc">Urutkan: Nama (A-Z)</option>
+          <option value="name_desc">Urutkan: Nama (Z-A)</option>
+        </select>
+        <div class="stats" id="statsSummary">—</div>
+      </div>
+      <div class="doc-list" id="docList"></div>
+      <footer class="site-footer" id="siteFooter">
+        <div class="footer-row">📌 Terakhir sinkron: 30 Sep 2025 01:06</div>
+        <div class="footer-row">📂 Jumlah file: 30 • Dokumen: 21 • PDF: 9 • Spreadsheet: 0 • Slide: 0 • Gambar: 0 • Lainnya: 0</div>
+      </footer>
+    </div>
 
-    <div id="viewerOverlay" class="viewer-overlay" onclick="overlayClick(event)">
-      <div id="viewerContent" class="viewer-content" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
-        <div class="viewer-header">
-          <div id="viewerTitle" style="font-weight:700">Preview</div>
-          <div style="display:flex; gap:8px; align-items:center;">
-            <button class="btn icon" id="btnFullscreen" title="Fullscreen"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
-            <button class="btn icon" id="openNewTab" title="Buka di Tab Baru"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></button>
-            <button class="viewer-close" onclick="closeViewer()" title="Tutup">✕</button>
-          </div>
-        </div>
-        <iframe id="viewerIframe" class="viewer-iframe" src=""></iframe>
-      </div>
-    </div>
+    <div id="viewerOverlay" class="viewer-overlay" onclick="overlayClick(event)">
+      <div id="viewerContent" class="viewer-content" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
+        <div class="viewer-header">
+          <div id="viewerTitle" style="font-weight:700">Preview</div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn icon" id="btnFullscreen" title="Fullscreen"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
+            <button class="btn icon" id="openNewTab" title="Buka di Tab Baru"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></button>
+            <button class="viewer-close" onclick="closeViewer()" title="Tutup">✕</button>
+          </div>
+        </div>
+        <iframe id="viewerIframe" class="viewer-iframe" src=""></iframe>
+      </div>
+    </div>
 
-    <script>
-      const allDocs = [{"id":"1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY","title":"Bispro Bantuan Iuran JKP Pemerintah.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY/preview","updated":"2025-09-29T11:43:21.946Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":71660},{"id":"10TEINonN4qE51bcgu00gvJ9sRFGxbK-7","title":"Laporan Komprehensif Hasil ILC ke-113: Analisis St....pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/10TEINonN4qE51bcgu00gvJ9sRFGxbK-7/preview","updated":"2025-09-29T11:43:21.732Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":214858},{"id":"1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7","title":"Laporan Lengkap Hasil Pertemuan ILC Sesi ke-113.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7/preview","updated":"2025-09-29T11:43:21.536Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":117635},{"id":"1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH","title":"Panduan Lengkap Jaminan Sosial Ketenagakerjaan (Edisi Revisi) #1.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH/preview","updated":"2025-09-29T11:43:21.369Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":597631},{"id":"1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8","title":"Pembaruan Laporan BPJS Ketenagakerjaan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8/preview","updated":"2025-09-29T11:43:21.073Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":311897},{"id":"13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj","title":"Analisis Jaminan Sosial Ketenagakerjaan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj/preview","updated":"2025-09-29T11:42:30.907Z","updatedFormatted":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":381813},{"id":"1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ","title":"Peraturan Pengupahan dan Hubungan Kerja\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ/preview","updated":"2025-09-29T11:42:30.813Z","updatedFormatted":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":381057},{"id":"1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF/preview","updated":"2025-09-29T11:42:30.724Z","updatedFormatted":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":388699},{"id":"1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58","title":"Solusi Klaim JKP Dery Setiawan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58/preview","updated":"2025-09-29T11:42:30.598Z","updatedFormatted":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":330830},{"id":"1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU","title":"PHK, Pesangon, dan Peraturan Hukum","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU/preview","updated":"2025-09-29T10:54:59.348Z","updatedFormatted":"29 Sep 2025 17:54","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Analisis Yuridis Komprehensif: Pembayaran Pesangon Secara Tunai dan Sekaligus vs. Dicicil Pasca UU Cipta Kerja dan Implikasinya Terhadap Penyelesaian Perselisihan Hubungan Industrial\nPakar yang Ditugaskan: Ahli Hukum Senior, Spesialisasi Hukum Ketenagakerjaan Indonesia\nRingkasan Eksekutif\nLaporan ini menyajikan analisis yuridis mendalam mengenai isu krusial dalam hubungan industrial di Indonesia: metode pembayaran uang pesangon pasca-Pemutusan Hubungan Kerja (PHK). Fokus utama analisis adalah pe","size":20644},{"id":"1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ","title":"Telaahan Jamsos Ojol Kurol","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ/preview","updated":"2025-09-29T10:54:35.226Z","updatedFormatted":"29 Sep 2025 17:54","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nOptimalisasi Perlindungan Jaminan Sosial Tenaga Kerja bagi Kurir dan Ojek Online di Indonesia: Analisis, Tantangan, dan Rekomendasi Regulasi\n\n\nRingkasan Eksekutif\n\nPertumbuhan ekonomi gig di Indonesia, yang dimotori oleh perusahaan aplikasi seperti Gojek, Grab, dan Maxim, telah menciptakan jutaan lapangan kerja bagi pengemudi ojek (ojol) dan kurir. Namun, segmen tenaga kerja yang signifikan dan terus berkembang ini beroperasi dalam kondisi kerentanan sosial yang akut. Status hukum mereka sebaga","size":44159},{"id":"15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk","title":"Risalah Komprehensif Sistem Jaminan Sosial Ketenagakerjaan di Indonesia ","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk/preview","updated":"2025-09-29T10:50:00.117Z","updatedFormatted":"29 Sep 2025 17:50","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Risalah Komprehensif Sistem Jaminan Sosial Ketenagakerjaan di Indonesia (Edisi Revisi dan Analisis Terintegrasi)\nAbstrak Eksekutif\nDokumen ini menyajikan suatu analisis mendalam serta panduan komprehensif perihal sistem jaminan sosial ketenagakerjaan di Indonesia, yang diselenggarakan oleh Badan Penyelenggara Jaminan Sosial (BPJS) Ketenagakerjaan. Laporan ini mengintegrasikan suatu tinjauan atas program, manfaat, dan prosedur klaim dengan analisis kinerja finansial, tingkat ketahanan dana, serta","size":17134},{"id":"1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0","title":"Laporan Komprehensif Hasil ILC ke-113","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0/preview","updated":"2025-09-29T10:49:42.016Z","updatedFormatted":"29 Sep 2025 17:49","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Laporan Komprehensif Hasil ILC ke-113: Analisis Strategis dan Rincian Draf Instrumen Ekonomi Platform bagi Indonesia\nBagian I: Ringkasan Eksekutif\nKonferensi Perburuhan Internasional (International Labour Conference/ILC) ke-113 yang diselenggarakan pada Juni 2025 menjadi titik balik historis dalam tata kelola ketenagakerjaan global, khususnya terkait ekonomi platform. Laporan ini menyajikan analisis mendalam atas hasil-hasil konferensi tersebut dari perspektif kepentingan strategis Indonesia, de","size":13558},{"id":"1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes","title":"Panduan Mediasi","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes/preview","updated":"2025-09-29T10:46:24.885Z","updatedFormatted":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Panduan Utama Mediasi: Teori, Praktik, dan Studi Kasus Terkini (Edisi 2025)\nDari Konsep Fundamental hingga Penyelesaian Sengketa Kompleks\n\nKata Pengantar\nPanduan ini disadur dari Naskah Akademis “Mediasi” yang ditulis oleh Puslitbang Hukum dan Peradilan, Mahkamah Agung RI, Tahun 2027. Dari naskah akademis menjadi sebuah referensi komprehensif yang dirancang untuk menjawab tantangan mediasi di dunia yang terus berubah. Kebutuhan untuk menjembatani teori akademis dengan praktik lapangan kini menja","size":20498},{"id":"14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI","title":"Hukum Perusahaan ","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI/preview","updated":"2025-09-29T10:46:17.677Z","updatedFormatted":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Uraian Lengkap dan Rinci: Hukum Perusahaan\nDokumen ini merupakan penjabaran detail dari buku \"Hukum Perusahaan\" karya Dr. Pujiyono, S.H., M.H., yang mencakup konsep-konsep fundamental hingga aspek-aspek spesifik mengenai berbagai bentuk badan usaha di Indonesia.\nBAB I: LANDASAN DASAR HUKUM, PERUSAHAAN, DAN PENGUSAHA\nBagian 1: Memahami Konsep Hukum dalam Dunia Bisnis\nHukum, dalam esensinya, adalah sebuah sistem peraturan yang terstruktur (berisi perintah dan larangan) yang dibuat oleh lembaga res","size":10917},{"id":"1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E","title":"Panduan Beracara di Pengadilan HI","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E/preview","updated":"2025-09-29T10:46:08.618Z","updatedFormatted":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Panduan Praktis Beracara di Pengadilan Hubungan Industrial (PHI)\n\nBAB 1: DASAR-DASAR HUKUM ACARA\n1.1 Memahami Hukum dan Tujuannya\nHukum pada dasarnya adalah tatanan norma yang adil, bersifat memaksa, dan memiliki sanksi. Namun, di ruang sidang, hukum bukanlah sekadar pasal-pasal kaku. Tujuannya adalah untuk mencapai tiga pilar utama: kepastian, keadilan, dan kemanfaatan. Memahami ketiganya adalah kunci untuk melihat bagaimana seorang hakim berpikir.\nKepastian: Ketaatan pada aturan hukum yang ber","size":13032},{"id":"1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg","title":"Solusi Klaim JKP Dery Setiawan (ver 2)","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg/preview","updated":"2025-09-29T10:42:50.277Z","updatedFormatted":"29 Sep 2025 17:42","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nAnalisis Opsi Solusi Klaim Jaminan Kehilangan Pekerjaan (JKP) bagi Pekerja yang Pemutusan Hubungan Kerjanya Belum Dilaporkan Perusahaan\n\n\nI. Pendahuluan\n\n\nA. Latar Belakang Kasus Sdr. Dery Setiawan\n\nSdr. Dery Setiawan, seorang mantan karyawan PT Orange Inovasi Digital (PT OID), menghadapi kendala serius dalam mengakses haknya atas Jaminan Kehilangan Pekerjaan (JKP) setelah mengalami Pemutusan Hubungan Kerja (PHK). Sdr. Dery di-PHK pada tanggal 19 Maret 2025, dengan alasan efisiensi perusahaan. ","size":25078},{"id":"107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM","title":"Panduan Komprehensif Hukum Ketenagakerjaan dan HI","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM/preview","updated":"2025-09-29T07:34:16.405Z","updatedFormatted":"29 Sep 2025 14:34","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Panduan Komprehensif Hukum Ketenagakerjaan dan Hubungan Industrial Indonesia\nBAB I: Kerangka Hukum dan Transformasi Regulasi Ketenagakerjaan\n1.1. Dinamika Regulasi Pasca-UU Cipta Kerja dan Putusan MK\nHukum ketenagakerjaan di Indonesia adalah lanskap yang sangat dinamis, berlandaskan Pancasila dan UUD 1945, yang bertujuan menciptakan masyarakat adil dan makmur. Evolusi regulasi ini mencapai titik krusial dengan lahirnya Undang-Undang Nomor 11 Tahun 2020 tentang Cipta Kerja (UU Cipta Kerja).\nMeski","size":8282},{"id":"1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4","title":"Ketenagakerjaan Tangguh Iklim","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4/preview","updated":"2025-09-29T06:58:50.108Z","updatedFormatted":"29 Sep 2025 13:58","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nMemperkuat Peran Ketenagakerjaan dalam Pembangunan Perlindungan Sosial yang Tangguh Iklim: Analisis, Strategi, dan Arah Kebijakan\n\n\nPendahuluan: Konvergensi Agenda Iklim, Sosial, dan Ketenagakerjaan\n\nKonteks dan Urgensi\nPeluncuran Kerjasama \"Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim\" yang diinisiasi oleh Kementerian Perencanaan Pembangunan Nasional/Badan Perencanaan Pembangunan Nasional (Kementerian PPN/Bappenas) dan United Nations Economic and Social Commission for Asia and ","size":36835},{"id":"1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA","title":"JHT dan JP Analisis Mendalam","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA/preview","updated":"2025-09-29T06:50:40.551Z","updatedFormatted":"29 Sep 2025 13:50","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nAnalisis Komprehensif Jaminan Hari Tua (JHT) dan Jaminan Pensiun (JP) di Indonesia: Menavigasi Regulasi Baru, Tantangan Implementasi, dan Arah Kebijakan Masa Depan\n\n\nPendahuluan: Lanskap Jaminan Sosial Hari Tua di Indonesia\n\nIndonesia berada di tengah transformasi demografis yang signifikan, ditandai dengan peningkatan populasi lanjut usia yang akan terus berlanjut hingga puncaknya pada tahun 2045.1 Fenomena ini memberikan tekanan yang semakin besar pada sistem perlindungan sosial nasional, men","size":33037},{"id":"1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU","title":"Analisis Komprehensif Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU/preview","updated":"2025-09-29T06:13:59.868Z","updatedFormatted":"29 Sep 2025 13:13","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Analisis Komprehensif Hukum Ketenagakerjaan Indonesia: Ulasan Pasal per Pasal UU No. 13/2003 & UU No. 6/2023\nBab I: Ketentuan Umum (Pasal 1)\nA. Definisi Kunci dalam Hukum Ketenagakerjaan\nPasal 1 dalam Undang-Undang No. 13 Tahun 2003 (UU Ketenagakerjaan) berfungsi sebagai kamus istilah yang mendefinisikan 33 terminologi kunci yang digunakan di seluruh naskah undang-undang. Pemahaman terhadap pasal ini sangat fundamental karena memberikan kerangka acuan untuk menafsirkan pasal-pasal berikutnya.\nBe","size":10543},{"id":"19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0","title":"Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0/preview","updated":"2025-09-29T04:43:01.560Z","updatedFormatted":"29 Sep 2025 11:43","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Laporan\nPeluncuran Kerja Sama “Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim: Pemberdayaan Menuju Masyarakat Mandiri dan Tangguh terhadap Perubahan Iklim”\nTanggal: 25 Agustus 2025\nPenyelenggara: Kementerian Perencanaan Pembangunan Nasional/Badan Perencanaan Pembangunan Nasional (PPN/Bappenas)\nLokasi: Jakarta, Indonesia\n1. Latar Belakang\nPada tanggal 25 Agustus 2025, di tengah meningkatnya frekuensi dan intensitas kejadian iklim ekstrem di berbagai wilayah nusantara, Kementerian PP","size":9534},{"id":"1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo","title":"Kendala Prosedural Klaim Manfaat JKP Pasca Sengketa Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo/preview","updated":"2025-09-29T03:37:41.147Z","updatedFormatted":"29 Sep 2025 10:37","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nKendala Prosedural: Analisis Klaim Manfaat Jaminan Kehilangan Pekerjaan (JKP) Bagi Pekerja Pasca Sengketa Hubungan Industrial\n\n\nRingkasan Eksekutif\n\nProgram Jaminan Kehilangan Pekerjaan (JKP), yang dirancang sebagai pilar utama jaring pengaman sosial, secara sistemis belum optimal dalam memberikan perlindungan bagi kelompok pekerja yang menggunakan hak hukumnya untuk menggugat keabsahan pemutusan hubungan kerja (PHK).1 Persoalan mendasar terletak pada ketidakselarasan fundamental antara kerangk","size":20875},{"id":"1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI/preview","updated":"2025-09-29T02:56:21.730Z","updatedFormatted":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nLaporan Komprehensif Kebijakan Hubungan Kerja dan Pengupahan di Indonesia\n\n\n1. Pendahuluan\n\n\nLatar Belakang dan Konteks Hubungan Industrial di Indonesia\n\nHubungan industrial di Indonesia merupakan suatu sistem yang kompleks dan dinamis, terbentuk antara para pelaku utama proses produksi barang dan/atau jasa, yaitu pengusaha, pekerja/buruh, dan pemerintah. Sistem ini berakar kuat pada nilai-nilai luhur Pancasila dan Undang-Undang Dasar 1945, yang menjadi landasan filosofis dan konstitusionalnya.","size":33731},{"id":"104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU","title":"Peraturan Pengupahan dan Hubungan Kerja","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU/preview","updated":"2025-09-29T02:56:15.579Z","updatedFormatted":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nTinjauan Komprehensif Peraturan Perundang-undangan Terbaru Terkait Pengupahan dan Hubungan Kerja di Indonesia\n\n\nI. Ringkasan Eksekutif\n\nLanskap hukum ketenagakerjaan di Indonesia telah mengalami transformasi signifikan, terutama dipicu oleh penetapan Undang-Undang Cipta Kerja. Perubahan ini bertujuan untuk menyederhanakan regulasi, meningkatkan iklim investasi, dan mendorong penciptaan lapangan kerja. Inti dari kerangka hukum terbaru ini adalah Undang-Undang Nomor 6 Tahun 2023, yang mengesahkan","size":26801},{"id":"1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38","title":"Analisis Jaminan Sosial Ketenagakerjaan","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38/preview","updated":"2025-09-29T02:56:08.497Z","updatedFormatted":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nLaporan Komprehensif: Arah Kebijakan Fasilitasi Kesejahteraan Pekerja dan Optimalisasi Program Jaminan Sosial Tenaga Kerja\n\n\nExecutive Summary\n\nDirektorat Jaminan Sosial Tenaga Kerja dan Fasilitasi Kesejahteraan Pekerja pada Kementerian Ketenagakerjaan memiliki mandat ganda yang krusial: meningkatkan kesejahteraan pekerja melalui penyediaan fasilitas (Faskesja) dan memastikan perlindungan jaminan sosial yang komprehensif (Jamsosnaker). Laporan ini menyajikan tinjauan mendalam terhadap kerangka ","size":31602},{"id":"1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI","title":"Laporan Acara Bappenas 25082025","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI/preview","updated":"2025-08-25T18:04:54.157Z","updatedFormatted":"26 Aug 2025 01:04","typeLabel":"Dokumen","icon":"📄","isNew":false,"contentText":"Laporan\nPeluncuran Kerjasama “Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim: Pemberdayaan Menuju Masyarakat Mandiri dan Tangguh terhadap Perubahan Iklim”\nTanggal: 25 Agustus 2025\nPenyelenggara: Kementerian Perencanaan Pembangunan Nasional/Badan Perencanaan Pembangunan Nasional (PPN/Bappenas)\nLokasi: Jakarta, Indonesia\n1. Latar Belakang\nPada tanggal 25 Agustus 2025, di tengah meningkatnya frekuensi dan intensitas kejadian iklim ekstrim di berbagai wilayah nusantara, Kementerian PPN","size":9534},{"id":"16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50","title":"Pendalaman Informasi Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50/preview","updated":"2025-08-03T01:04:20.022Z","updatedFormatted":"03 Aug 2025 08:04","typeLabel":"Dokumen","icon":"📄","isNew":false,"contentText":"Panduan Komprehensif Hubungan Industrial dan Jaminan Sosial Tenaga Kerja di Indonesia: Analisis Mendalam tentang Regulasi, Program, dan Praktik Terkini\nRingkasan Eksekutif\nLaporan ini menyajikan analisis komprehensif mengenai kerangka Hubungan Industrial (HI) dan sistem Jaminan Sosial Tenaga Kerja (Jamsostek) di Indonesia. Analisis ini menyoroti sifat dinamis dari hukum ketenagakerjaan nasional, peran krusial jaminan sosial dalam kesejahteraan bangsa, dan implikasi praktis dari perubahan regulas","size":24400},{"id":"1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0","title":"Panduan Lengkap Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0/preview","updated":"2025-08-03T01:02:14.835Z","updatedFormatted":"03 Aug 2025 08:02","typeLabel":"Dokumen","icon":"📄","isNew":false,"contentText":"Panduan Komprehensif Hubungan Industrial dan Jaminan Sosial Tenaga Kerja Indonesia\nBab 1: Fondasi Hubungan Industrial Pancasila\n1.1. Definisi, Filosofi, dan Tujuan Hubungan Industrial\nHubungan Industrial (HI) merupakan pilar fundamental dalam ekosistem ketenagakerjaan nasional. Secara yuridis, Hubungan Industrial didefinisikan sebagai suatu sistem hubungan yang terbentuk antara para pelaku dalam proses produksi barang dan/atau jasa, yang terdiri dari unsur pengusaha, pekerja/buruh, dan pemerinta","size":29220},{"id":"1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4","title":"Panduan Lengkap Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4/preview","updated":"2025-07-26T17:42:03.616Z","updatedFormatted":"27 Jul 2025 00:42","typeLabel":"Dokumen","icon":"📄","isNew":false,"contentText":"Panduan Komprehensif Hukum Ketenagakerjaan Indonesia: Navigasi Regulasi Pasca-UU Cipta Kerja dan Putusan Mahkamah Konstitusi\nPendahuluan: Transformasi Hukum Ketenagakerjaan Indonesia\nHukum ketenagakerjaan di Indonesia merupakan sebuah lanskap regulasi yang dinamis, dibentuk oleh fondasi filosofis negara dan tuntutan ekonomi global. Kerangka hukum ini secara fundamental bertujuan untuk mewujudkan cita-cita bangsa sebagaimana termaktub dalam Pancasila dan Undang-Undang Dasar Negara Republik Indone","size":41524}];
-      const docListEl = document.getElementById('docList');
-      const searchInput = document.getElementById('searchInput');
-      const clearSearchBtn = document.getElementById('clearSearchBtn');
-      const filterSelect = document.getElementById('filterSelect');
-      const sortSelect = document.getElementById('sortSelect');
-      const statsSummary = document.getElementById('statsSummary');
-      const viewerOverlay = document.getElementById('viewerOverlay');
-      const viewerIframe = document.getElementById('viewerIframe');
-      const viewerTitle = document.getElementById('viewerTitle');
-      const openNewTabBtn = document.getElementById('openNewTab');
-      const btnFullscreen = document.getElementById('btnFullscreen');
-      let filteredDocs = allDocs.slice();
-      const BATCH_SIZE = 20;
-      let renderedCount = 0;
+    <script>
+      const allDocs = [{"id":"1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY","title":"Bispro Bantuan Iuran JKP Pemerintah.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY/preview","updated":"2025-09-29T11:43:21.946Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":71660},{"id":"10TEINonN4qE51bcgu00gvJ9sRFGxbK-7","title":"Laporan Komprehensif Hasil ILC ke-113: Analisis St....pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/10TEINonN4qE51bcgu00gvJ9sRFGxbK-7/preview","updated":"2025-09-29T11:43:21.732Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":214858},{"id":"1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7","title":"Laporan Lengkap Hasil Pertemuan ILC Sesi ke-113.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7/preview","updated":"2025-09-29T11:43:21.536Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":117635},{"id":"1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH","title":"Panduan Lengkap Jaminan Sosial Ketenagakerjaan (Edisi Revisi) #1.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH/preview","updated":"2025-09-29T11:43:21.369Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":597631},{"id":"1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8","title":"Pembaruan Laporan BPJS Ketenagakerjaan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8/preview","updated":"2025-09-29T11:43:21.073Z","updatedFormatted":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":311897},{"id":"13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj","title":"Analisis Jaminan Sosial Ketenagakerjaan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj/preview","updated":"2025-09-29T11:42:30.907Z","updatedFormatted":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":381813},{"id":"1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ","title":"Peraturan Pengupahan dan Hubungan Kerja\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ/preview","updated":"2025-09-29T11:42:30.813Z","updatedFormatted":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":381057},{"id":"1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF/preview","updated":"2025-09-29T11:42:30.724Z","updatedFormatted":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":388699},{"id":"1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58","title":"Solusi Klaim JKP Dery Setiawan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58/preview","updated":"2025-09-29T11:42:30.598Z","updatedFormatted":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true,"contentText":"","size":330830},{"id":"1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU","title":"PHK, Pesangon, dan Peraturan Hukum","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU/preview","updated":"2025-09-29T10:54:59.348Z","updatedFormatted":"29 Sep 2025 17:54","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Analisis Yuridis Komprehensif: Pembayaran Pesangon Secara Tunai dan Sekaligus vs. Dicicil Pasca UU Cipta Kerja dan Implikasinya Terhadap Penyelesaian Perselisihan Hubungan Industrial\nPakar yang Ditugaskan: Ahli Hukum Senior, Spesialisasi Hukum Ketenagakerjaan Indonesia\nRingkasan Eksekutif\nLaporan ini menyajikan analisis yuridis mendalam mengenai isu krusial dalam hubungan industrial di Indonesia: metode pembayaran uang pesangon pasca-Pemutusan Hubungan Kerja (PHK). Fokus utama analisis adalah pe","size":20644},{"id":"1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ","title":"Telaahan Jamsos Ojol Kurol","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ/preview","updated":"2025-09-29T10:54:35.226Z","updatedFormatted":"29 Sep 2025 17:54","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nOptimalisasi Perlindungan Jaminan Sosial Tenaga Kerja bagi Kurir dan Ojek Online di Indonesia: Analisis, Tantangan, dan Rekomendasi Regulasi\n\n\nRingkasan Eksekutif\n\nPertumbuhan ekonomi gig di Indonesia, yang dimotori oleh perusahaan aplikasi seperti Gojek, Grab, dan Maxim, telah menciptakan jutaan lapangan kerja bagi pengemudi ojek (ojol) dan kurir. Namun, segmen tenaga kerja yang signifikan dan terus berkembang ini beroperasi dalam kondisi kerentanan sosial yang akut. Status hukum mereka sebaga","size":44159},{"id":"15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk","title":"Risalah Komprehensif Sistem Jaminan Sosial Ketenagakerjaan di Indonesia ","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk/preview","updated":"2025-09-29T10:50:00.117Z","updatedFormatted":"29 Sep 2025 17:50","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Risalah Komprehensif Sistem Jaminan Sosial Ketenagakerjaan di Indonesia (Edisi Revisi dan Analisis Terintegrasi)\nAbstrak Eksekutif\nDokumen ini menyajikan suatu analisis mendalam serta panduan komprehensif perihal sistem jaminan sosial ketenagakerjaan di Indonesia, yang diselenggarakan oleh Badan Penyelenggara Jaminan Sosial (BPJS) Ketenagakerjaan. Laporan ini mengintegrasikan suatu tinjauan atas program, manfaat, dan prosedur klaim dengan analisis kinerja finansial, tingkat ketahanan dana, serta","size":17134},{"id":"1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0","title":"Laporan Komprehensif Hasil ILC ke-113","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0/preview","updated":"2025-09-29T10:49:42.016Z","updatedFormatted":"29 Sep 2025 17:49","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Laporan Komprehensif Hasil ILC ke-113: Analisis Strategis dan Rincian Draf Instrumen Ekonomi Platform bagi Indonesia\nBagian I: Ringkasan Eksekutif\nKonferensi Perburuhan Internasional (International Labour Conference/ILC) ke-113 yang diselenggarakan pada Juni 2025 menjadi titik balik historis dalam tata kelola ketenagakerjaan global, khususnya terkait ekonomi platform. Laporan ini menyajikan analisis mendalam atas hasil-hasil konferensi tersebut dari perspektif kepentingan strategis Indonesia, de","size":13558},{"id":"1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes","title":"Panduan Mediasi","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes/preview","updated":"2025-09-29T10:46:24.885Z","updatedFormatted":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Panduan Utama Mediasi: Teori, Praktik, dan Studi Kasus Terkini (Edisi 2025)\nDari Konsep Fundamental hingga Penyelesaian Sengketa Kompleks\n\nKata Pengantar\nPanduan ini disadur dari Naskah Akademis “Mediasi” yang ditulis oleh Puslitbang Hukum dan Peradilan, Mahkamah Agung RI, Tahun 2027. Dari naskah akademis menjadi sebuah referensi komprehensif yang dirancang untuk menjawab tantangan mediasi di dunia yang terus berubah. Kebutuhan untuk menjembatani teori akademis dengan praktik lapangan kini menja","size":20498},{"id":"14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI","title":"Hukum Perusahaan ","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI/preview","updated":"2025-09-29T10:46:17.677Z","updatedFormatted":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Uraian Lengkap dan Rinci: Hukum Perusahaan\nDokumen ini merupakan penjabaran detail dari buku \"Hukum Perusahaan\" karya Dr. Pujiyono, S.H., M.H., yang mencakup konsep-konsep fundamental hingga aspek-aspek spesifik mengenai berbagai bentuk badan usaha di Indonesia.\nBAB I: LANDASAN DASAR HUKUM, PERUSAHAAN, DAN PENGUSAHA\nBagian 1: Memahami Konsep Hukum dalam Dunia Bisnis\nHukum, dalam esensinya, adalah sebuah sistem peraturan yang terstruktur (berisi perintah dan larangan) yang dibuat oleh lembaga res","size":10917},{"id":"1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E","title":"Panduan Beracara di Pengadilan HI","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E/preview","updated":"2025-09-29T10:46:08.618Z","updatedFormatted":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Panduan Praktis Beracara di Pengadilan Hubungan Industrial (PHI)\n\nBAB 1: DASAR-DASAR HUKUM ACARA\n1.1 Memahami Hukum dan Tujuannya\nHukum pada dasarnya adalah tatanan norma yang adil, bersifat memaksa, dan memiliki sanksi. Namun, di ruang sidang, hukum bukanlah sekadar pasal-pasal kaku. Tujuannya adalah untuk mencapai tiga pilar utama: kepastian, keadilan, dan kemanfaatan. Memahami ketiganya adalah kunci untuk melihat bagaimana seorang hakim berpikir.\nKepastian: Ketaatan pada aturan hukum yang ber","size":13032},{"id":"1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg","title":"Solusi Klaim JKP Dery Setiawan (ver 2)","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg/preview","updated":"2025-09-29T10:42:50.277Z","updatedFormatted":"29 Sep 2025 17:42","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nAnalisis Opsi Solusi Klaim Jaminan Kehilangan Pekerjaan (JKP) bagi Pekerja yang Pemutusan Hubungan Kerjanya Belum Dilaporkan Perusahaan\n\n\nI. Pendahuluan\n\n\nA. Latar Belakang Kasus Sdr. Dery Setiawan\n\nSdr. Dery Setiawan, seorang mantan karyawan PT Orange Inovasi Digital (PT OID), menghadapi kendala serius dalam mengakses haknya atas Jaminan Kehilangan Pekerjaan (JKP) setelah mengalami Pemutusan Hubungan Kerja (PHK). Sdr. Dery di-PHK pada tanggal 19 Maret 2025, dengan alasan efisiensi perusahaan. ","size":25078},{"id":"107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM","title":"Panduan Komprehensif Hukum Ketenagakerjaan dan HI","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM/preview","updated":"2025-09-29T07:34:16.405Z","updatedFormatted":"29 Sep 2025 14:34","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Panduan Komprehensif Hukum Ketenagakerjaan dan Hubungan Industrial Indonesia\nBAB I: Kerangka Hukum dan Transformasi Regulasi Ketenagakerjaan\n1.1. Dinamika Regulasi Pasca-UU Cipta Kerja dan Putusan MK\nHukum ketenagakerjaan di Indonesia adalah lanskap yang sangat dinamis, berlandaskan Pancasila dan UUD 1945, yang bertujuan menciptakan masyarakat adil dan makmur. Evolusi regulasi ini mencapai titik krusial dengan lahirnya Undang-Undang Nomor 11 Tahun 2020 tentang Cipta Kerja (UU Cipta Kerja).\nMeski","size":8282},{"id":"1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4","title":"Ketenagakerjaan Tangguh Iklim","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4/preview","updated":"2025-09-29T06:58:50.108Z","updatedFormatted":"29 Sep 2025 13:58","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nMemperkuat Peran Ketenagakerjaan dalam Pembangunan Perlindungan Sosial yang Tangguh Iklim: Analisis, Strategi, dan Arah Kebijakan\n\n\nPendahuluan: Konvergensi Agenda Iklim, Sosial, dan Ketenagakerjaan\n\nKonteks dan Urgensi\nPeluncuran Kerjasama \"Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim\" yang diinisiasi oleh Kementerian Perencanaan Pembangunan Nasional/Badan Perencanaan Pembangunan Nasional (Kementerian PPN/Bappenas) dan United Nations Economic and Social Commission for Asia and ","size":36835},{"id":"1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA","title":"JHT dan JP Analisis Mendalam","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA/preview","updated":"2025-09-29T06:50:40.551Z","updatedFormatted":"29 Sep 2025 13:50","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nAnalisis Komprehensif Jaminan Hari Tua (JHT) dan Jaminan Pensiun (JP) di Indonesia: Menavigasi Regulasi Baru, Tantangan Implementasi, dan Arah Kebijakan Masa Depan\n\n\nPendahuluan: Lanskap Jaminan Sosial Hari Tua di Indonesia\n\nIndonesia berada di tengah transformasi demografis yang signifikan, ditandai dengan peningkatan populasi lanjut usia yang akan terus berlanjut hingga puncaknya pada tahun 2045.1 Fenomena ini memberikan tekanan yang semakin besar pada sistem perlindungan sosial nasional, men","size":33037},{"id":"1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU","title":"Analisis Komprehensif Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU/preview","updated":"2025-09-29T06:13:59.868Z","updatedFormatted":"29 Sep 2025 13:13","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Analisis Komprehensif Hukum Ketenagakerjaan Indonesia: Ulasan Pasal per Pasal UU No. 13/2003 & UU No. 6/2023\nBab I: Ketentuan Umum (Pasal 1)\nA. Definisi Kunci dalam Hukum Ketenagakerjaan\nPasal 1 dalam Undang-Undang No. 13 Tahun 2003 (UU Ketenagakerjaan) berfungsi sebagai kamus istilah yang mendefinisikan 33 terminologi kunci yang digunakan di seluruh naskah undang-undang. Pemahaman terhadap pasal ini sangat fundamental karena memberikan kerangka acuan untuk menafsirkan pasal-pasal berikutnya.\nBe","size":10543},{"id":"19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0","title":"Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0/preview","updated":"2025-09-29T04:43:01.560Z","updatedFormatted":"29 Sep 2025 11:43","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"Laporan\nPeluncuran Kerja Sama “Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim: Pemberdayaan Menuju Masyarakat Mandiri dan Tangguh terhadap Perubahan Iklim”\nTanggal: 25 Agustus 2025\nPenyelenggara: Kementerian Perencanaan Pembangunan Nasional/Badan Perencanaan Pembangunan Nasional (PPN/Bappenas)\nLokasi: Jakarta, Indonesia\n1. Latar Belakang\nPada tanggal 25 Agustus 2025, di tengah meningkatnya frekuensi dan intensitas kejadian iklim ekstrem di berbagai wilayah nusantara, Kementerian PP","size":9534},{"id":"1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo","title":"Kendala Prosedural Klaim Manfaat JKP Pasca Sengketa Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo/preview","updated":"2025-09-29T03:37:41.147Z","updatedFormatted":"29 Sep 2025 10:37","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nKendala Prosedural: Analisis Klaim Manfaat Jaminan Kehilangan Pekerjaan (JKP) Bagi Pekerja Pasca Sengketa Hubungan Industrial\n\n\nRingkasan Eksekutif\n\nProgram Jaminan Kehilangan Pekerjaan (JKP), yang dirancang sebagai pilar utama jaring pengaman sosial, secara sistemis belum optimal dalam memberikan perlindungan bagi kelompok pekerja yang menggunakan hak hukumnya untuk menggugat keabsahan pemutusan hubungan kerja (PHK).1 Persoalan mendasar terletak pada ketidakselarasan fundamental antara kerangk","size":20875},{"id":"1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI/preview","updated":"2025-09-29T02:56:21.730Z","updatedFormatted":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nLaporan Komprehensif Kebijakan Hubungan Kerja dan Pengupahan di Indonesia\n\n\n1. Pendahuluan\n\n\nLatar Belakang dan Konteks Hubungan Industrial di Indonesia\n\nHubungan industrial di Indonesia merupakan suatu sistem yang kompleks dan dinamis, terbentuk antara para pelaku utama proses produksi barang dan/atau jasa, yaitu pengusaha, pekerja/buruh, dan pemerintah. Sistem ini berakar kuat pada nilai-nilai luhur Pancasila dan Undang-Undang Dasar 1945, yang menjadi landasan filosofis dan konstitusionalnya.","size":33731},{"id":"104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU","title":"Peraturan Pengupahan dan Hubungan Kerja","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU/preview","updated":"2025-09-29T02:56:15.579Z","updatedFormatted":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nTinjauan Komprehensif Peraturan Perundang-undangan Terbaru Terkait Pengupahan dan Hubungan Kerja di Indonesia\n\n\nI. Ringkasan Eksekutif\n\nLanskap hukum ketenagakerjaan di Indonesia telah mengalami transformasi signifikan, terutama dipicu oleh penetapan Undang-Undang Cipta Kerja. Perubahan ini bertujuan untuk menyederhanakan regulasi, meningkatkan iklim investasi, dan mendorong penciptaan lapangan kerja. Inti dari kerangka hukum terbaru ini adalah Undang-Undang Nomor 6 Tahun 2023, yang mengesahkan","size":26801},{"id":"1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38","title":"Analisis Jaminan Sosial Ketenagakerjaan","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38/preview","updated":"2025-09-29T02:56:08.497Z","updatedFormatted":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true,"contentText":"\nLaporan Komprehensif: Arah Kebijakan Fasilitasi Kesejahteraan Pekerja dan Optimalisasi Program Jaminan Sosial Tenaga Kerja\n\n\nExecutive Summary\n\nDirektorat Jaminan Sosial Tenaga Kerja dan Fasilitasi Kesejahteraan Pekerja pada Kementerian Ketenagakerjaan memiliki mandat ganda yang krusial: meningkatkan kesejahteraan pekerja melalui penyediaan fasilitas (Faskesja) dan memastikan perlindungan jaminan sosial yang komprehensif (Jamsosnaker). Laporan ini menyajikan tinjauan mendalam terhadap kerangka ","size":31602},{"id":"1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI","title":"Laporan Acara Bappenas 25082025","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI/preview","updated":"2025-08-25T18:04:54.157Z","updatedFormatted":"26 Aug 2025 01:04","typeLabel":"Dokumen","icon":"📄","isNew":false,"contentText":"Laporan\nPeluncuran Kerjasama “Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim: Pemberdayaan Menuju Masyarakat Mandiri dan Tangguh terhadap Perubahan Iklim”\nTanggal: 25 Agustus 2025\nPenyelenggara: Kementerian Perencanaan Pembangunan Nasional/Badan Perencanaan Pembangunan Nasional (PPN/Bappenas)\nLokasi: Jakarta, Indonesia\n1. Latar Belakang\nPada tanggal 25 Agustus 2025, di tengah meningkatnya frekuensi dan intensitas kejadian iklim ekstrim di berbagai wilayah nusantara, Kementerian PPN","size":9534},{"id":"16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50","title":"Pendalaman Informasi Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50/preview","updated":"2025-08-03T01:04:20.022Z","updatedFormatted":"03 Aug 2025 08:04","typeLabel":"Dokumen","icon":"📄","isNew":false,"contentText":"Panduan Komprehensif Hubungan Industrial dan Jaminan Sosial Tenaga Kerja di Indonesia: Analisis Mendalam tentang Regulasi, Program, dan Praktik Terkini\nRingkasan Eksekutif\nLaporan ini menyajikan analisis komprehensif mengenai kerangka Hubungan Industrial (HI) dan sistem Jaminan Sosial Tenaga Kerja (Jamsostek) di Indonesia. Analisis ini menyoroti sifat dinamis dari hukum ketenagakerjaan nasional, peran krusial jaminan sosial dalam kesejahteraan bangsa, dan implikasi praktis dari perubahan regulas","size":24400},{"id":"1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0","title":"Panduan Lengkap Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0/preview","updated":"2025-08-03T01:02:14.835Z","updatedFormatted":"03 Aug 2025 08:02","typeLabel":"Dokumen","icon":"📄","isNew":false,"contentText":"Panduan Komprehensif Hubungan Industrial dan Jaminan Sosial Tenaga Kerja Indonesia\nBab 1: Fondasi Hubungan Industrial Pancasila\n1.1. Definisi, Filosofi, dan Tujuan Hubungan Industrial\nHubungan Industrial (HI) merupakan pilar fundamental dalam ekosistem ketenagakerjaan nasional. Secara yuridis, Hubungan Industrial didefinisikan sebagai suatu sistem hubungan yang terbentuk antara para pelaku dalam proses produksi barang dan/atau jasa, yang terdiri dari unsur pengusaha, pekerja/buruh, dan pemerinta","size":29220},{"id":"1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4","title":"Panduan Lengkap Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4/preview","updated":"2025-07-26T17:42:03.616Z","updatedFormatted":"27 Jul 2025 00:42","typeLabel":"Dokumen","icon":"📄","isNew":false,"contentText":"Panduan Komprehensif Hukum Ketenagakerjaan Indonesia: Navigasi Regulasi Pasca-UU Cipta Kerja dan Putusan Mahkamah Konstitusi\nPendahuluan: Transformasi Hukum Ketenagakerjaan Indonesia\nHukum ketenagakerjaan di Indonesia merupakan sebuah lanskap regulasi yang dinamis, dibentuk oleh fondasi filosofis negara dan tuntutan ekonomi global. Kerangka hukum ini secara fundamental bertujuan untuk mewujudkan cita-cita bangsa sebagaimana termaktub dalam Pancasila dan Undang-Undang Dasar Negara Republik Indone","size":41524}];
+      const docListEl = document.getElementById('docList');
+      const searchInput = document.getElementById('searchInput');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+      const filterSelect = document.getElementById('filterSelect');
+      const sortSelect = document.getElementById('sortSelect');
+      const statsSummary = document.getElementById('statsSummary');
+      const viewerOverlay = document.getElementById('viewerOverlay');
+      const viewerIframe = document.getElementById('viewerIframe');
+      const viewerTitle = document.getElementById('viewerTitle');
+      const openNewTabBtn = document.getElementById('openNewTab');
+      const btnFullscreen = document.getElementById('btnFullscreen');
+      let filteredDocs = allDocs.slice();
+      const BATCH_SIZE = 20;
+      let renderedCount = 0;
 
-      function formatBytes(bytes, decimals = 2) {
-        if (!bytes) return '0 Bytes'; // Handle null or 0 size
-        const k = 1024;
-        const dm = decimals < 0 ? 0 : decimals;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-      }
+      function formatBytes(bytes, decimals = 2) {
+        if (!bytes) return '0 Bytes'; // Handle null or 0 size
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+      }
 
-      function updateStats() { statsSummary.innerText = `${filteredDocs.length} hasil`; }
-      function escapeHtml(s){ if(!s) return ''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+      function updateStats() { statsSummary.innerText = `${filteredDocs.length} hasil`; }
+      function escapeHtml(s){ if(!s) return ''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-      function applyFilterAndSearch() {
-        const q = (searchInput.value || '').toLowerCase().trim();
-        const f = filterSelect.value;
-        
-        // 1. Filter
-        filteredDocs = allDocs.filter(d => {
-          const matchesFilter = (f === 'all') || (d.typeLabel === f);
-          const titleMatch = d.title && d.title.toLowerCase().includes(q);
-          const contentMatch = d.contentText && d.contentText.toLowerCase().includes(q);
-          const matchesQuery = !q || titleMatch || contentMatch;
-          return matchesFilter && matchesQuery;
-        });
+      function applyFilterAndSearch() {
+        const q = (searchInput.value || '').toLowerCase().trim();
+        const f = filterSelect.value;
+        
+        // 1. Filter
+        filteredDocs = allDocs.filter(d => {
+          const matchesFilter = (f === 'all') || (d.typeLabel === f);
+          const titleMatch = d.title && d.title.toLowerCase().includes(q);
+          const contentMatch = d.contentText && d.contentText.toLowerCase().includes(q);
+          const matchesQuery = !q || titleMatch || contentMatch;
+          return matchesFilter && matchesQuery;
+        });
 
-        // 2. Sort
-        const sortValue = sortSelect.value;
-        filteredDocs.sort((a, b) => {
-          if (sortValue === 'name_asc') {
-            return a.title.localeCompare(b.title);
-          } else if (sortValue === 'name_desc') {
-            return b.title.localeCompare(a.title);
-          } else if (sortValue === 'updated_asc') {
-            return new Date(a.updated) - new Date(b.updated);
-          } else { // default to updated_desc
-            return new Date(b.updated) - new Date(a.updated);
-          }
-        });
-        
-        // 3. Render
-        renderedCount = 0;
-        docListEl.innerHTML = '';
-        updateStats();
-        renderNextBatch();
-      }
+        // 2. Sort
+        const sortValue = sortSelect.value;
+        filteredDocs.sort((a, b) => {
+          if (sortValue === 'name_asc') {
+            return a.title.localeCompare(b.title);
+          } else if (sortValue === 'name_desc') {
+            return b.title.localeCompare(a.title);
+          } else if (sortValue === 'updated_asc') {
+            return new Date(a.updated) - new Date(b.updated);
+          } else { // default to updated_desc
+            return new Date(b.updated) - new Date(a.updated);
+          }
+        });
+        
+        // 3. Render
+        renderedCount = 0;
+        docListEl.innerHTML = '';
+        updateStats();
+        renderNextBatch();
+      }
 
-      function createCardElement(d) {
-        const card = document.createElement('div');
-        card.className = 'doc-card';
-        const safeTitle = escapeHtml(d.title);
-        card.innerHTML = `
-          <div style="display:flex; gap:10px; align-items:center;">
-            <div class="icon-circle">${d.icon}</div>
-            <div style="flex:1; min-width:0;">
-              <a class="doc-title" href="javascript:void(0)" onclick="openViewer('${d.preview}', '${safeTitle}')">${safeTitle}</a>
-              <div class="doc-meta"><div class="meta-left"></div></div>
-            </div>
-          </div>
-          <div class="card-actions">
-            <button class="btn" onclick="openViewer('${d.preview}', '${safeTitle}')">Preview</button>
-            <a class="btn secondary" href="${d.preview}" target="_blank" rel="noopener">View</a>
-            <div style="font-size:0.9rem; color:var(--muted); margin-left: auto; text-align:right;">
-              ${formatBytes(d.size)}<br>
-              <span style="font-size: 0.9em;">${d.typeLabel}</span>
-            </div>
-          </div>
-        `;
-        const metaLeft = card.querySelector('.meta-left');
-        const dateSpan = document.createElement('span');
-        dateSpan.textContent = 'updated: ' + d.updatedFormatted; // Gunakan tanggal yang sudah diformat
-        metaLeft.appendChild(dateSpan);
-        if (d.isNew) {
-          const badge = document.createElement('span');
-          badge.className = 'badge-new';
-          badge.textContent = 'NEW';
-          metaLeft.appendChild(badge);
-        }
-        return card;
-      }
+      function createCardElement(d) {
+        const card = document.createElement('div');
+        card.className = 'doc-card';
+        const safeTitle = escapeHtml(d.title);
+        card.innerHTML = `
+          <div style="display:flex; gap:10px; align-items:center;">
+            <div class="icon-circle">${d.icon}</div>
+            <div style="flex:1; min-width:0;">
+              <a class="doc-title" href="javascript:void(0)" onclick="openViewer('${d.preview}', '${safeTitle}')">${safeTitle}</a>
+              <div class="doc-meta"><div class="meta-left"></div></div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="btn" onclick="openViewer('${d.preview}', '${safeTitle}')">Preview</button>
+            <a class="btn secondary" href="${d.preview}" target="_blank" rel="noopener">View</a>
+            <div style="font-size:0.9rem; color:var(--muted); margin-left: auto; text-align:right;">
+              ${formatBytes(d.size)}<br>
+              <span style="font-size: 0.9em;">${d.typeLabel}</span>
+            </div>
+          </div>
+        `;
+        const metaLeft = card.querySelector('.meta-left');
+        const dateSpan = document.createElement('span');
+        dateSpan.textContent = 'updated: ' + d.updatedFormatted; // Gunakan tanggal yang sudah diformat
+        metaLeft.appendChild(dateSpan);
+        if (d.isNew) {
+          const badge = document.createElement('span');
+          badge.className = 'badge-new';
+          badge.textContent = 'NEW';
+          metaLeft.appendChild(badge);
+        }
+        return card;
+      }
 
-      function renderNextBatch() {
-        const start = renderedCount;
-        const end = Math.min(renderedCount + BATCH_SIZE, filteredDocs.length);
-        for (let i = start; i < end; i++) { docListEl.appendChild(createCardElement(filteredDocs[i])); }
-        renderedCount = end;
-        updateStats();
-      }
+      function renderNextBatch() {
+        const start = renderedCount;
+        const end = Math.min(renderedCount + BATCH_SIZE, filteredDocs.length);
+        for (let i = start; i < end; i++) { docListEl.appendChild(createCardElement(filteredDocs[i])); }
+        renderedCount = end;
+        updateStats();
+      }
 
-      window.addEventListener('scroll', function() { if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 250)) { if (renderedCount < filteredDocs.length) renderNextBatch(); } });
-      
-      clearSearchBtn.addEventListener('click', function() { searchInput.value = ''; applyFilterAndSearch(); clearSearchBtn.style.display = 'none'; });
-      searchInput.addEventListener('input', function() { if (searchInput.value.length > 0) { clearSearchBtn.style.display = 'block'; } else { clearSearchBtn.style.display = 'none'; } });
-      searchInput.addEventListener('input', debounce(applyFilterAndSearch, 200));
-      filterSelect.addEventListener('change', applyFilterAndSearch);
-      sortSelect.addEventListener('change', applyFilterAndSearch);
-      
-      applyFilterAndSearch();
+      window.addEventListener('scroll', function() { if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 250)) { if (renderedCount < filteredDocs.length) renderNextBatch(); } });
+      
+      clearSearchBtn.addEventListener('click', function() { searchInput.value = ''; applyFilterAndSearch(); clearSearchBtn.style.display = 'none'; });
+      searchInput.addEventListener('input', function() { if (searchInput.value.length > 0) { clearSearchBtn.style.display = 'block'; } else { clearSearchBtn.style.display = 'none'; } });
+      searchInput.addEventListener('input', debounce(applyFilterAndSearch, 200));
+      filterSelect.addEventListener('change', applyFilterAndSearch);
+      sortSelect.addEventListener('change', applyFilterAndSearch);
+      
+      applyFilterAndSearch();
 
-      function openViewer(url, title) { viewerTitle.innerText = title || 'Preview'; viewerIframe.src = url; openNewTabBtn.onclick = function(){ window.open(url, '_blank'); }; viewerOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-      function closeViewer() { viewerOverlay.style.display = 'none'; viewerIframe.src = ''; document.body.style.overflow = ''; }
-      function overlayClick(e){ if(e.target === viewerOverlay) closeViewer(); }
-      btnFullscreen.addEventListener('click', function(){ const el = document.getElementById('viewerContent'); if (!document.fullscreenElement) { if (el.requestFullscreen) el.requestFullscreen(); } else { if (document.exitFullscreen) document.exitFullscreen(); } });
-      
-      (function(){
-        let startY = null, currentY = null, touching = false; const threshold = 120;
-        viewerOverlay.addEventListener('touchstart', function(e){ if (viewerOverlay.style.display !== 'flex' || !e.touches || e.touches.length !== 1) return; startY = e.touches[0].clientY; touching = true; }, {passive:true});
-        viewerOverlay.addEventListener('touchmove', function(e){ if (!touching) return; currentY = e.touches[0].clientY; const diff = currentY - startY; if (diff > 10) { const content = document.getElementById('viewerContent'); content.style.transform = 'translateY(' + Math.min(diff, 200) + 'px)'; content.style.transition = 'transform 0s'; } }, {passive:true});
-        viewerOverlay.addEventListener('touchend', function(){ if (!touching) return; const diff = currentY - startY; const content = document.getElementById('viewerContent'); content.style.transition = ''; content.style.transform = ''; if (diff > threshold) { closeViewer(); } startY = null; currentY = null; touching = false; });
-      })();
+      function openViewer(url, title) { viewerTitle.innerText = title || 'Preview'; viewerIframe.src = url; openNewTabBtn.onclick = function(){ window.open(url, '_blank'); }; viewerOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+      function closeViewer() { viewerOverlay.style.display = 'none'; viewerIframe.src = ''; document.body.style.overflow = ''; }
+      function overlayClick(e){ if(e.target === viewerOverlay) closeViewer(); }
+      btnFullscreen.addEventListener('click', function(){ const el = document.getElementById('viewerContent'); if (!document.fullscreenElement) { if (el.requestFullscreen) el.requestFullscreen(); } else { if (document.exitFullscreen) document.exitFullscreen(); } });
+      
+      (function(){
+        let startY = null, currentY = null, touching = false; const threshold = 120;
+        viewerOverlay.addEventListener('touchstart', function(e){ if (viewerOverlay.style.display !== 'flex' || !e.touches || e.touches.length !== 1) return; startY = e.touches[0].clientY; touching = true; }, {passive:true});
+        viewerOverlay.addEventListener('touchmove', function(e){ if (!touching) return; currentY = e.touches[0].clientY; const diff = currentY - startY; if (diff > 10) { const content = document.getElementById('viewerContent'); content.style.transform = 'translateY(' + Math.min(diff, 200) + 'px)'; content.style.transition = 'transform 0s'; } }, {passive:true});
+        viewerOverlay.addEventListener('touchend', function(){ if (!touching) return; const diff = currentY - startY; const content = document.getElementById('viewerContent'); content.style.transition = ''; content.style.transform = ''; if (diff > threshold) { closeViewer(); } startY = null; currentY = null; touching = false; });
+      })();
 
-      function debounce(fn, wait) { let t; return function(...args) { clearTimeout(t); t = setTimeout(()=>fn.apply(this, args), wait); }; }
-      function toggleTheme(){ document.body.classList.toggle('dark'); }
-      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { if (viewerOverlay.style.display === 'flex') closeViewer(); } });
-    </script>
-  </body>
-  </html>
-  
+      function debounce(fn, wait) { let t; return function(...args) { clearTimeout(t); t = setTimeout(()=>fn.apply(this, args), wait); }; }
+      function toggleTheme(){ document.body.classList.toggle('dark'); }
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { if (viewerOverlay.style.display === 'flex') closeViewer(); } });
+    </script>
+  </body>
+  </html>
+  
