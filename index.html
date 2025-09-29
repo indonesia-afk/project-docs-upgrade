@@ -4,12 +4,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Taman Bacaan</title>
+    <title>TAMAN BACAAN by @TOMMY</title>
+
+    <!-- Orbitron font for headline -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
       :root{ --accent:#1a73e8; --bg:#f0f2f5; --card:#fff; --text:#111; --muted:#555; --badge:#ff5252; }
       body { font-family: Arial, sans-serif; margin:0; padding:0; background:var(--bg); color:var(--text); transition: background .25s, color .25s; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
       .container { max-width:1000px; margin:20px auto; padding:18px; }
-      h1 { text-align:center; color:var(--accent); margin-bottom:12px; font-size:1.6rem; }
+      h1 { text-align:center; color:var(--accent); margin-bottom:12px; font-size:1.6rem; font-family: 'Orbitron', sans-serif; text-transform:uppercase; letter-spacing:1px; }
       .controls { display:flex; gap:12px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
       #searchInput { flex:1; min-width:180px; padding:10px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box; font-size:0.95rem; }
       #filterSelect { padding:10px; border-radius:8px; border:1px solid #ccc; background:#fff; font-size:0.95rem; }
@@ -44,7 +48,6 @@
       .viewer-iframe { flex:1; border:0; width:100%; height:100%; background:#fff; }
       .viewer-close { background:transparent; border:0; font-size:1.1em; cursor:pointer; }
 
-      /* small screens */
       @media (max-width:640px){
         .doc-card { width:100%; }
         .viewer-content { height:92vh; max-width:100%; border-radius:8px; }
@@ -58,7 +61,6 @@
       body.dark .theme-toggle { background:#222; }
       body.dark .viewer-content { background:#111; color:#eee; }
       body.dark .viewer-header { background:#0f0f0f; border-bottom-color:#222; }
-
     </style>
   </head>
   <body>
@@ -67,7 +69,7 @@
     </div>
 
     <div class="container">
-      <h1>Taman Bacaan</h1>
+      <h1>TAMAN BACAAN by @TOMMY</h1>
 
       <div class="controls">
         <input id="searchInput" placeholder="Cari judul atau isi dokumen..." />
@@ -87,7 +89,7 @@
 
       <footer class="site-footer" id="siteFooter">
         <div class="footer-row">
-          📌 Terakhir sinkron: 29 Sep 2025 19:07
+          📌 Terakhir sinkron: 29 Sep 2025 19:22
         </div>
         <div class="footer-row">
           📂 Jumlah file: 30 • Dokumen: 21 • PDF: 9 • Spreadsheet: 0 • Slide: 0 • Gambar: 0 • Lainnya: 0
@@ -114,6 +116,7 @@
     </div>
 
     <script>
+      // data injected from server
       const allDocs = [{"id":"1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY","title":"Bispro Bantuan Iuran JKP Pemerintah.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1PSA3sZx4k-SyXHDR16sbYvPTqUXmLBzY/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"10TEINonN4qE51bcgu00gvJ9sRFGxbK-7","title":"Laporan Komprehensif Hasil ILC ke-113: Analisis St....pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/10TEINonN4qE51bcgu00gvJ9sRFGxbK-7/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7","title":"Laporan Lengkap Hasil Pertemuan ILC Sesi ke-113.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1jRbRq6xvrfdwxFLkrBbL5KMmK4dAoRS7/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH","title":"Panduan Lengkap Jaminan Sosial Ketenagakerjaan (Edisi Revisi) #1.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1lEbkQw9_K_uFmj4w-TXUCTPlFtPEuRbH/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8","title":"Pembaruan Laporan BPJS Ketenagakerjaan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1U8F38nCsQ8YsV-5QzI7PrDr-ruRyl2A8/preview","updated":"29 Sep 2025 18:43","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj","title":"Analisis Jaminan Sosial Ketenagakerjaan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/13rEiK8Ja1e-qmommqaIrZEtaxOxN3oFj/preview","updated":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ","title":"Peraturan Pengupahan dan Hubungan Kerja\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1EOWDIoikUjcD6lMJuZSfEmsxUZkwj2mZ/preview","updated":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1wYuMbWRacMSOxGkTZD1Tdakew_KAqYNF/preview","updated":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58","title":"Solusi Klaim JKP Dery Setiawan\n.pdf","mime":"application/pdf","preview":"https://drive.google.com/file/d/1d1jFendiHQ8JO8Vz9TmvgxFO0QTIMP58/preview","updated":"29 Sep 2025 18:42","typeLabel":"PDF","icon":"📕","isNew":true},{"id":"1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU","title":"PHK, Pesangon, dan Peraturan Hukum","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1tdrQxGZWYOHgXXpgdInTkIb-k1Knnizudktufgd0AvU/preview","updated":"29 Sep 2025 17:54","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ","title":"Telaahan Jamsos Ojol Kurol","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1hGAYEvft1MgfApNcMoirzCmeM27HG6_3_NXByABJGwQ/preview","updated":"29 Sep 2025 17:54","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk","title":"Risalah Komprehensif Sistem Jaminan Sosial Ketenagakerjaan di Indonesia ","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/15oM14wOgH2gAEA4GaZ9nihfFMZBDaH8prR6roJhMdmk/preview","updated":"29 Sep 2025 17:50","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0","title":"Laporan Komprehensif Hasil ILC ke-113","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1dqqhsvqc050ekU2dDKjEKgvCpMxOhhqqKi-D2Icn8a0/preview","updated":"29 Sep 2025 17:49","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes","title":"Panduan Mediasi","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1-ylRaQa-wTHVqbdY7iOKp0fSNFcgD6zd-MdGV6bztes/preview","updated":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI","title":"Hukum Perusahaan ","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/14haLLQZgHknESaRJAIgjk76gx5ZNuH7dNxxrQRqEHJI/preview","updated":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E","title":"Panduan Beracara di Pengadilan HI","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1ntkz-vn8kFTj0Tk_21sjU2HxbbhazKKQHWyP1IQSm3E/preview","updated":"29 Sep 2025 17:46","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg","title":"Solusi Klaim JKP Dery Setiawan (ver 2)","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1UHc7e--yD7GM3sCxQKgBBbplR1uZ577UIX74annF1Rg/preview","updated":"29 Sep 2025 17:42","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM","title":"Panduan Komprehensif Hukum Ketenagakerjaan dan HI","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/107Ya2lQSqxOZfzhV8bFFzeIPD4lYyqMq4lM_ZDDf7KM/preview","updated":"29 Sep 2025 14:34","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4","title":"Ketenagakerjaan Tangguh Iklim","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1b64yKqg3frJ4pp754eBL8oggg_k9vyvbXg9w7MV0bs4/preview","updated":"29 Sep 2025 13:58","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA","title":"JHT dan JP Analisis Mendalam","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1d0BXV212iNDpRsuMJar6O9kx2c_wU8xSse-72QGpnnA/preview","updated":"29 Sep 2025 13:50","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU","title":"Analisis Komprehensif Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1n_R2PhWWS60MDjRIep8CZaSk_JiRJiwlspeuzC-Z-RU/preview","updated":"29 Sep 2025 13:13","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0","title":"Perlindungan Sosial yang Inklusif dan Tangguh terhadap Iklim","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/19ek5KI3ftfezN3LsIpeqC9wRL5tC5iG6i4GDC8lT0V0/preview","updated":"29 Sep 2025 11:43","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo","title":"Kendala Prosedural Klaim Manfaat JKP Pasca Sengketa Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1Hcvquycd-hwsFL_Cqe8qIvbs-34dKT3miuTqU872ovo/preview","updated":"29 Sep 2025 10:37","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI","title":"Ringkasan Teknis Hubungan Kerja dan Pengupahan","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1_FzHlFYNhUo1yj-OXcEs4-4iu39_ASxRauefV3Sm2cI/preview","updated":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU","title":"Peraturan Pengupahan dan Hubungan Kerja","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/104pogF4eRqiqONZjfY4XW6hxUo3U8xw67LTq6ROFVcU/preview","updated":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38","title":"Analisis Jaminan Sosial Ketenagakerjaan","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1bJQnI2CYfkVgg85kwimaNAYIeLCgbKojdydB75m4Q38/preview","updated":"29 Sep 2025 09:56","typeLabel":"Dokumen","icon":"📄","isNew":true},{"id":"1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI","title":"Laporan Acara Bappenas 25082025","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1C2IaDgANTsvs4KEwuRsMyIPKx2o0UDYAI661Xg7_vVI/preview","updated":"26 Aug 2025 01:04","typeLabel":"Dokumen","icon":"📄","isNew":false},{"id":"16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50","title":"Pendalaman Informasi Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/16o_cR1Z-2wVKSWisRDkyjd8xzkQJOXGLzNYa0pAZv50/preview","updated":"03 Aug 2025 08:04","typeLabel":"Dokumen","icon":"📄","isNew":false},{"id":"1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0","title":"Panduan Lengkap Hubungan Industrial","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1QmBOKthu8qv7OxaMM5NRckdWzBhSD7kP6jbGTS2hLb0/preview","updated":"03 Aug 2025 08:02","typeLabel":"Dokumen","icon":"📄","isNew":false},{"id":"1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4","title":"Panduan Lengkap Hukum Ketenagakerjaan Indonesia","mime":"application/vnd.google-apps.document","preview":"https://docs.google.com/document/d/1k9-LWyM4KIft0_D8s-f2u7288BHVkg-T0BqYrVJ9VW4/preview","updated":"27 Jul 2025 00:42","typeLabel":"Dokumen","icon":"📄","isNew":false}];
       const docListEl = document.getElementById('docList');
       const searchInput = document.getElementById('searchInput');
@@ -125,8 +128,8 @@
       const openNewTabBtn = document.getElementById('openNewTab');
       const btnFullscreen = document.getElementById('btnFullscreen');
       let filteredDocs = allDocs.slice();
-      
-      // lazy loading settings
+
+      // lazy loading
       const BATCH_SIZE = 20;
       let renderedCount = 0;
 
@@ -136,13 +139,13 @@
 
       function escapeHtml(s){
         if(!s) return '';
-        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
       }
 
       function applyFilterAndSearch() {
         const q = (searchInput.value || '').toLowerCase().trim();
         const f = filterSelect.value;
-        filteredDocs = allDocs.filter(d => {
+        filteredDocs = allDocs.filter(function(d) {
           const matchesFilter = (f === 'all') || (d.typeLabel === f);
           const matchesQuery = !q || (d.title && d.title.toLowerCase().includes(q));
           return matchesFilter && matchesQuery;
@@ -153,26 +156,82 @@
         renderNextBatch();
       }
 
+      // create card using DOM to avoid template literal interpolation issues
       function createCardElement(d) {
         const card = document.createElement('div');
         card.className = 'doc-card';
-        const newBadge = d.isNew ? '<span class="badge-new">Baru</span>' : '';
-        const safeTitle = escapeHtml(d.title);
-        card.innerHTML = `
-          <div style="display:flex; gap:10px; align-items:center;">
-            <div class="icon-circle">${d.icon}</div>
-            <div style="flex:1; min-width:0;">
-              <a class="doc-title" href="javascript:void(0)" onclick="openViewer('${d.preview}', '${safeTitle}')">${safeTitle}</a>
-              <div class="doc-meta"><div class="meta-left">updated: ${d.updated} ${d.isNew ? '${newBadge}' : ''}</div></div>
-            </div>
-          </div>
-          <div class="card-actions">
-            <button class="btn" onclick="openViewer('${d.preview}', '${safeTitle}')" title="Lihat">👁️ Lihat</button>
-            <a class="btn secondary" href="${d.preview}" target="_blank" rel="noopener" title="Buka di Tab Baru">↗️</a>
-            <div style="flex:1"></div>
-            <div style="font-size:0.9rem; color:var(--muted)">${d.typeLabel}</div>
-          </div>
-        `;
+
+        const top = document.createElement('div');
+        top.style.display = 'flex';
+        top.style.gap = '10px';
+        top.style.alignItems = 'center';
+
+        const iconCircle = document.createElement('div');
+        iconCircle.className = 'icon-circle';
+        iconCircle.textContent = d.icon || '';
+
+        const contentDiv = document.createElement('div');
+        contentDiv.style.flex = '1';
+        contentDiv.style.minWidth = '0';
+
+        const a = document.createElement('a');
+        a.className = 'doc-title';
+        a.href = 'javascript:void(0)';
+        a.textContent = d.title;
+        a.addEventListener('click', function(){ openViewer(d.preview, d.title); });
+
+        const metaDiv = document.createElement('div');
+        metaDiv.className = 'doc-meta';
+        const metaLeft = document.createElement('div');
+        metaLeft.className = 'meta-left';
+        metaLeft.textContent = 'updated: ' + d.updated;
+        if (d.isNew) {
+          const badge = document.createElement('span');
+          badge.className = 'badge-new';
+          badge.textContent = 'Baru';
+          metaLeft.appendChild(document.createTextNode(' '));
+          metaLeft.appendChild(badge);
+        }
+        metaDiv.appendChild(metaLeft);
+
+        contentDiv.appendChild(a);
+        contentDiv.appendChild(metaDiv);
+
+        top.appendChild(iconCircle);
+        top.appendChild(contentDiv);
+        card.appendChild(top);
+
+        // actions
+        const actions = document.createElement('div');
+        actions.className = 'card-actions';
+
+        const btnView = document.createElement('button');
+        btnView.className = 'btn';
+        btnView.textContent = '👁️ Lihat';
+        btnView.addEventListener('click', function(){ openViewer(d.preview, d.title); });
+
+        const aNew = document.createElement('a');
+        aNew.className = 'btn secondary';
+        aNew.href = d.preview;
+        aNew.target = '_blank';
+        aNew.rel = 'noopener';
+        aNew.textContent = '↗️';
+
+        const flexFill = document.createElement('div');
+        flexFill.style.flex = '1';
+
+        const typeDiv = document.createElement('div');
+        typeDiv.style.fontSize = '0.9rem';
+        typeDiv.style.color = 'var(--muted)';
+        typeDiv.textContent = d.typeLabel;
+
+        actions.appendChild(btnView);
+        actions.appendChild(aNew);
+        actions.appendChild(flexFill);
+        actions.appendChild(typeDiv);
+
+        card.appendChild(actions);
+
         return card;
       }
 
@@ -187,7 +246,7 @@
         updateStats();
       }
 
-      // infinite scroll: load more when near bottom
+      // infinite scroll load more
       window.addEventListener('scroll', function() {
         if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 250)) {
           if (renderedCount < filteredDocs.length) renderNextBatch();
@@ -203,7 +262,6 @@
       // Viewer controls
       function openViewer(url, title) {
         viewerTitle.innerText = title || 'Preview';
-        // for docs/spreadsheets/presentations using docs url, keep it
         viewerIframe.src = url;
         openNewTabBtn.onclick = function(){ window.open(url, '_blank'); };
         viewerOverlay.style.display = 'flex';
@@ -233,7 +291,7 @@
         let startY = null;
         let currentY = null;
         let touching = false;
-        const threshold = 120; // px
+        const threshold = 120;
         viewerOverlay.addEventListener('touchstart', function(e){
           if (viewerOverlay.style.display !== 'flex') return;
           if (!e.touches || e.touches.length !== 1) return;
@@ -245,7 +303,6 @@
           currentY = e.touches[0].clientY;
           const diff = currentY - startY;
           if (diff > 10) {
-            // translate the modal down a little for feedback
             const content = document.getElementById('viewerContent');
             content.style.transform = 'translateY(' + Math.min(diff, 200) + 'px)';
             content.style.transition = 'transform 0s';
@@ -274,11 +331,9 @@
       }
 
       // theme toggle
-      function toggleTheme(){
-        document.body.classList.toggle('dark');
-      }
+      function toggleTheme(){ document.body.classList.toggle('dark'); }
 
-      // allow ESC to close viewer
+      // ESC closes viewer
       document.addEventListener('keydown', function(e){
         if (e.key === 'Escape') {
           if (viewerOverlay.style.display === 'flex') closeViewer();
